@@ -1,0 +1,238 @@
+.login {
+    position: relative;
+    height: 100vh;
+
+    h1 {
+        text-align: center;
+        font-size: 20px;
+    }
+    
+    &__wrapper {
+        overflow: hidden;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 35px;
+        width: 100%;
+        max-width: 410px;
+
+        background-color: #ffffff;
+        box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%);
+
+        p[name="back"] {
+            margin-bottom: 20px;
+            text-align: right;
+            font-size: 14px;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        &-single {
+            margin-top: 40px;
+        }
+        
+        &-input {
+            position: relative;
+            display: inline-block;
+            padding: 0px 10px;
+            height: 40px;
+            width: 100%;
+            appearance: none;
+            border: solid thin #8D8D8D;
+            transition: .3s ease-out;
+
+            &-error {
+                position: absolute;
+                color: rgb(236, 73, 73);
+                transition: 1s ease-in-out;
+            }
+
+            &:focus {
+                border-color: rgb(0, 255, 157);
+            }
+        }
+
+        &-button {
+            text-align: center;
+        }
+
+        button {
+            position: relative;
+            margin-top: 40px;
+            display: inline-block;
+            padding: 10px 50px;
+            color: #ffffff;
+            border: transparent;
+            border-radius: 30px;
+            background-color: #3D3D3D;
+
+            &:hover {
+                opacity: 0.9;
+            }
+
+            &:disabled {
+                background-color: #ddd;
+                color: #aaa;
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-image: linear-gradient(-45deg, transparent 25%, rgba(255,255,255,.5) 25%, rgba(255,255,255,.5) 50%, transparent 50%, transparent 75%, rgba(255,255,255,.5) 75%, rgba(255,255,255,.5));
+                    background-size: 50px 50px;
+                    animation: animate-stripes 2s linear infinite;
+                    opacity: 0.6;
+                }
+            } 
+        }
+    }
+
+    &__registration {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 25px;
+        font-size: 14px;
+        cursor: pointer;
+
+        p:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .signup {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: 35px;
+        width: 100%;
+        transition: 0.5s ease-in-out;
+        background-color: #ffffff;
+        box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%);
+
+        h2 {
+            text-align: center;
+            font-size: 20px;
+        }
+
+        &__form {
+            display: flex;
+            flex-direction: column;
+            
+            &-input {
+                position: relative;
+                display: inline-block;
+                margin: 2px 0px;
+                padding: 0px 10px;
+                height: 40px;
+                width: 95%;
+                border: none;
+
+                &-wrapper {
+                    margin-top: 20px;
+                    text-align: center;
+                    border: solid thin #8D8D8D;
+                    border-radius: 10px;
+
+                    div[name="separation"] {
+                        border-bottom: solid thin #8D8D8D;
+                    }
+                }
+    
+                &-error {
+                    position: absolute;
+                    color: rgb(236, 73, 73);
+                    transition: 1s ease-in-out;
+                }
+            }
+    
+            &-button {
+                margin-top: 20px;
+                display: flex;
+                justify-content: space-around;
+                gap: 20px;
+
+                p[name="back-to-signin"] {
+                    flex: 1;
+                    font-size: 14px;
+                    cursor: pointer;
+    
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+
+                button {
+                    position: relative;
+                    display: inline-block;
+                    padding: 10px 50px;
+                    color: #ffffff;
+                    border: transparent;
+                    border-radius: 30px;
+                    background-color: #3D3D3D;
+        
+                    &:hover {
+                        opacity: 0.9;
+                    }
+
+                    &:disabled {
+                        background-color: #ddd;
+                        color: #aaa;
+        
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background-image: linear-gradient(-45deg, transparent 25%, rgba(255,255,255,.5) 25%, rgba(255,255,255,.5) 50%, transparent 50%, transparent 75%, rgba(255,255,255,.5) 75%, rgba(255,255,255,.5));
+                            background-size: 50px 50px;
+                            animation: animate-stripes 2s linear infinite;
+                            opacity: 0.6;
+                        }
+                    } 
+                }
+            }
+           
+        }
+
+        &__registration {
+            margin-top: 20px;
+            text-align: center;
+            border-top: solid thin #8D8D8D;
+            
+            p {
+                margin-top: 10px;
+            }
+
+            div {
+                margin-top: 10px;
+                display: flex;
+                justify-content: space-around;
+
+                img {
+                    width: 30px;
+                }
+            }
+        }
+    }
+}
+
+@keyframes animate-stripes {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 50px 50px;
+    }
+}

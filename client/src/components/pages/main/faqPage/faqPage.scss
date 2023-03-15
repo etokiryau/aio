@@ -1,0 +1,198 @@
+.faq {
+    margin: 0 auto;
+    padding: 105px 50px 0;
+    max-width: 800px;
+    text-align: center;
+
+    h1 {
+        font-size: 34px;
+    }
+
+    h2 {
+        margin-top: 30px;
+        font-size: 20px;
+    }
+
+    &__list {
+        margin-top: 180px;
+
+        &-line {
+            height: 1px;
+            background-color: rgb(238, 238, 238);;
+        }
+
+        &-single {           
+            &-head {
+                padding: 20px 0px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 20px;
+                line-height: 30px;
+                cursor: pointer;
+
+                &:hover {
+                    div:nth-child(2) {
+                        color: #ffffff;
+                        background-color: #3D3D3D;
+                    }
+                }
+
+                div[name='name'] {
+                    text-align: left;
+                    font-size: 18px;
+                    pointer-events: none;
+                }
+
+                &-plus {
+                    font-size: 38px;
+                    font-weight: 100;
+                    min-width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    pointer-events: none;
+                    user-select: none;
+                    transition: .25s;
+                }
+            }
+
+            div[name='list'] {
+                overflow: hidden;
+                max-height: 0px;
+                text-align: left;
+                transition: all 1s ease-in;
+
+                ul {
+                    text-align: left;
+                    list-style:none;
+                    margin-bottom: 20px;
+                    font-size: 12px;
+
+                    li {
+                        padding: 2px 0px;
+                        line-height: 20px;
+                    }
+                }
+
+                &.active {
+                    max-height: 1000px;
+                }
+
+                div[name='list-single'] {
+                    ul {
+                        list-style: disc;
+                        margin-bottom: 25px;
+    
+                        li {
+                            margin-left: 17px;
+                            padding: 2px 0px;
+                        }
+                    }
+                }
+
+                p {
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+
+    &__beneath {
+        margin-top: 135px;
+        padding: 0 105px;
+
+        p {
+            margin-top: 25px;
+            font-size: 18px;
+        }
+
+        a {
+            position: relative;
+            display: inline-block;
+            margin-top: 75px;
+            border: solid thin #3D3D3D;
+            border-radius: 30px;
+            transition: .5s ease;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #3D3D3D;
+
+                p {
+                    color: #ffffff;
+                }
+            }
+
+            p {
+                margin: 0px 50px;
+                padding: 15px 0;
+                font-size: 12px;
+            }
+        }
+
+        svg {
+            position: absolute;
+            pointer-events: none;
+            fill: #c9c9c9;
+
+            &[name='left'] {
+                top: -20px;
+                left: -50px;
+                width: 40px;
+            }
+
+            &[name='above'] {
+                display: none;
+                top: -55px;
+                left: 50%;
+                width: 20px;
+                transform: translateX(-50%);
+            }
+
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .faq {
+        &__beneath {   
+            svg {  
+                &[name='left'] {
+                    display: none;
+                }
+    
+                &[name='above'] {
+                    display: block;
+                    top: -55px;
+                    left: 50%;
+                    width: 20px;
+                }
+    
+            }
+        }
+    }
+}
+
+@media (max-width: 660px) {
+    .faq {
+        padding: 105px 10px 0;
+
+        &__beneath {
+            padding: 0 55px;
+    
+            p {
+                font-size: 18px;
+            }
+
+            a {  
+                &:hover {
+                    background-color: inherit;
+    
+                    p {
+                        color: inherit;
+                    }
+                }
+            }
+        }
+    }
+}

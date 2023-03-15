@@ -1,0 +1,21 @@
+.container_error {
+    padding-top: 50px;
+    text-align: center;
+
+    h1 {
+        margin-top: 50px;
+    }
+    
+    h2 {
+        margin-top: 20px;
+    }
+    
+    a {      
+        color:rgb(63, 175, 91);
+    
+        &:hover {
+            border-bottom: solid thin;
+        }
+    }
+}
+

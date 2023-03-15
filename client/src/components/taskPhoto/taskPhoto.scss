@@ -1,0 +1,42 @@
+.photo {
+    p {
+        text-align: left;
+        color:#000000;
+    }
+
+    &__part {
+        margin-bottom: 15px;
+        padding: 15px;
+        
+        background-color: #E8E8E8;
+        border-radius: 10px;
+    
+        &-info {
+            display: flex;
+            align-items: flex-start;
+            background-color: #CBC7FF;
+            border-radius: 10px;
+
+            img {
+                margin: 10px 5px 10px 10px;
+            }
+
+            p {
+                padding: 15px 15px 15px 5px;
+            }
+        }
+
+        &-reference {
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        img[name="reference"] {
+            width: 100%;
+            margin: auto;
+        }
+    }
+    
+}

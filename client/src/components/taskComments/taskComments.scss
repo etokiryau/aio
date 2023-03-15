@@ -1,0 +1,100 @@
+.comments {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+    &__list {
+        overflow-y: auto;
+        margin-bottom: 10px;
+        padding-right: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 5px;
+        flex: 1;
+   
+        &::-webkit-scrollbar {
+            width: 15px;
+            background-color: #E5E5E5;
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: #3D3D3D;
+        }
+
+        &::-webkit-scrollbar-track {
+            margin-left: 10px;
+            background-color: #F2F2F2;
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar:horizontal {
+            display: none;
+        }
+        
+        &-piece {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            background-color: #CBC7FF;
+            border-radius: 10px;
+
+            p[name="text"] {
+                text-align: left;
+                max-width: 220px;
+                word-break: normal;
+            }
+
+            p[name="date"] {
+               text-decoration: underline;
+            }
+        }
+    }
+
+    &__add {
+        padding: 15px;
+        display: flex;
+        gap: 10px;
+        background-color: #F2F2F2;
+        border-radius: 10px;
+
+        input {
+            padding: 10px;
+            width: 100%;
+            border: none;
+            background-color: #F2F2F2;
+
+            &::placeholder {
+                color: #000000
+            }
+        }
+
+        button {
+            border: none
+        }
+    }
+}
+
+@media (max-width: 620px) {
+    .comments {
+        &__list {
+            &-piece {
+                margin-bottom: 5px;
+                padding: 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                background-color: #CBC7FF;
+                border-radius: 10px;
+    
+                p[name="text"] {
+                    max-width: 180px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,229 @@
+.drawings {
+    margin-top: 106px;
+    margin-bottom: 20px;
+    padding: 0px 30px 0px 30px;
+    text-align: center;
+
+    &__head {
+        font-size: 31px;
+
+        &-beneath {
+            margin-top: 15px;
+            font-size: 17px;
+        }
+    }
+
+    &__disciplines {
+        margin-top: 65px;
+
+        ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            li {
+                padding: 12px 20px;
+                font-size: 11px;
+                background-color: #E6E6E6;
+                border-radius: 30px;
+                transition: .4s;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #393939;
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+
+    &__instruction {
+        margin-top: 27px;
+        margin-left: 30px;
+        display: flex;
+        justify-content: left;
+        width: fit-content;
+        font-size: 15px;
+        line-height: 30px;
+        cursor: pointer;
+
+        a {
+            display: flex;
+            gap: 15px;
+        }
+
+        img {
+            width: 30px;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__solutions {
+        margin-top: 35px;
+
+        &-single {
+            margin-bottom: 20px;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            border: solid thin #3D3D3D;
+            border-radius: 30px;
+
+            &-left {
+                margin: auto;
+                text-align: left;
+                width: 40%;
+                
+                a {
+                    margin-top: 20px;
+                    display: flex;
+                    align-items: flex-end;
+                    gap: 15px;
+
+                    &:hover {
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+
+                    p {
+                        font-size: 19px;
+                    }
+                }
+
+                p {
+                    font-size: 30px;
+                }
+
+                img {
+                    width: 60px;
+                }
+
+            }
+
+            &-right {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 60%;
+                height: 300px;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: 50% 50%;
+                
+                div {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 150px;
+                    height: 150px;
+                    background-color: #ffffff;
+                    border-radius: 50%;
+
+                    cursor: pointer;
+                    transition: .2s ease-in-out;
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+
+                img {
+                    width: 70%;
+                }
+
+            }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .drawings {
+        margin-top: 50px;
+        padding: 0px 20px 0px 20px;
+    
+        &__head {
+            font-size: 25px;
+    
+            &-beneath {
+                margin-top: 15px;
+                font-size: 15px;
+            }
+        }
+
+        &__disciplines {
+            margin-top: 45px;
+        }
+
+        &__solutions {   
+            &-single {
+                flex-direction: column;
+
+                &-left {
+                    margin: auto;
+                    text-align: center;
+                    width: 100%;
+
+                    a {
+                        justify-content: center;
+                        align-items: center;
+
+                        img {
+                            width: 40px;
+                        }
+                    }
+                }
+
+                &-right {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 620px) {
+    .drawings {
+        &__solutions {
+            margin-top: 35px;
+    
+            &-single {
+                margin-bottom: 20px;
+                padding: 25px;
+                gap: 15px;
+    
+                &-left {
+                    div {
+                        margin-top: 15px;
+                        gap: 10px;
+    
+                        p {
+                            font-size: 12px;
+                        }
+
+                        img {
+                            width: 25px;
+                        }
+                    }
+    
+                    p {
+                        font-size: 20px;
+                    }
+                }
+
+                &-right {
+                    height: 150px;
+
+                    div {
+                        width: 80px;
+                        height: 80px;
+                    }
+                }
+            }
+        }
+    }
+}

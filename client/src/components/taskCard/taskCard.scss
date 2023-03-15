@@ -1,0 +1,86 @@
+.task-card {
+    position: absolute;
+    padding: 20px;
+    text-align: center;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%);
+    
+    &__wrapper {
+        display: inline-block;
+        min-width: 300px;
+        justify-content: center;
+
+        &-crossbtn {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: right;
+            
+            svg {
+                width: 20px;
+                cursor: pointer;
+            }
+        }
+        
+    }
+
+    &__navigation {
+        margin-bottom: 20px;
+        padding-right: 30px;
+        font-size: 14px;
+
+        ul {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            
+            li {
+                color: #000000;
+                min-width: 80px;
+                cursor: pointer;
+                letter-spacing: .3px;
+            }
+        }
+    }
+
+    &__content {
+        overflow-y: auto;
+        padding-right: 10px;
+        height: calc(100vh - 170px);     
+
+        p, div {
+            font-size: 14px;
+            letter-spacing: .3px;
+        }
+
+        &::-webkit-scrollbar {
+            width: 15px;
+            background-color: #E5E5E5;
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: #3D3D3D;
+        }
+
+        &::-webkit-scrollbar-track {
+            margin-left: 10px;
+            background-color: #E5E5E5;
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar:horizontal {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 620px) {
+    .task-card {
+        padding: 10px;
+        
+        &__wrapper {
+            min-width: 100%;
+        }
+    }
+}

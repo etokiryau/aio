@@ -1,0 +1,302 @@
+.project {
+    padding-bottom: 20px;
+    text-align: center;
+
+    &__wrapper {
+        padding: 105px 40px 0px 40px;
+    }
+
+    &__profile {
+        position: fixed;
+        top: 30px;
+        right: 40px;
+        display: flex;
+        justify-content: end;
+        z-index: 50;
+        
+        img {
+            width: 70px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            z-index: 100;
+            transition: .3s;
+            cursor: pointer;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+
+        &-modal {
+            position: absolute;
+            top: 0px;
+            right: 80px;
+            padding: 40px 50px;
+            flex-direction: column;
+            gap: 20px;
+
+            min-width: 400px;
+            max-width: 400px;
+            font-size: 21px;
+            color: #8D8D8D;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%);
+            border-radius: 10px;
+            z-index: 2;
+            word-break: break-all;
+
+            div {
+                text-align: left;
+            }
+
+            p {
+                color: #8D8D8D;
+
+                &[name="name"] {
+                    color: #3D3D3D;
+                }
+            }
+
+            &-link {
+                cursor: pointer;
+                transition: .4s;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            ul {
+                color: #3D3D3D;
+                font-weight: 600;
+            }
+        }
+    }
+
+    &__editprofile {
+        position: fixed;
+        top: 50%;
+        left: calc(50% + 30px);
+        transform: translate(-50%, -50%);
+        padding: 35px;
+        
+        width: 100%;
+        max-width: 410px;
+        font-size: 16px;
+        background-color: #ffffff;
+        box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%);
+        
+        &-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0,0,0, .5);
+            z-index: 60;
+        }
+
+        &-head {
+            margin-bottom: 30px;
+            font-size: 20px;
+        }
+
+        &-closebtn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 23px;
+            cursor: pointer;
+        }
+
+        h2 {
+            font-weight: 400;
+        }
+
+        &-form {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        
+        label, p {
+            text-align: left; 
+        }
+
+        input {
+            margin-bottom: 20px;
+            padding: 0px 10px;
+            height: 40px;
+            border: solid thin #8D8D8D;
+        }
+        
+
+        &-form-select {
+            position: relative;
+            text-align: left;
+            width: 90px;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 35%;
+                right: 5px;
+                transform: translateY(-50%);
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 10px 5px 0 5px;
+                border-color: #3d3d3d transparent transparent transparent;
+                pointer-events: none;
+            }
+        }
+
+        button {
+            &[name="image"] {
+                display: inline-block;
+                margin-bottom: 20px;
+                padding: 10px 30px;
+                color: #ffffff;
+                background-color: #3D3D3D;
+                border: #3D3D3D;
+                border-radius: 10px;
+                max-width: 50%;
+            }
+
+            &[name="result"] {
+                display: inline-block;
+                text-align: center;
+                padding: 10px 40px;
+                background-color: #ffffff;
+                border: solid thin #3D3D3D;
+                border-radius: 30px;
+                min-width: 40%;
+
+                &:hover {
+                    background-color: #393939;
+                    color: #ffffff;
+                }
+            }
+        }
+
+        select {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 5px 0px;
+            width: 100%;
+            appearance: none;
+            border: none;
+            border-bottom: solid thin #3D3D3D;
+            outline: none;
+            background-color: #ffffff;
+        }
+
+        &-changepass {
+            font-size: 14px;
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        &-result {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+    }
+
+    &__head {
+        font-size: 37px;
+    }
+
+    &__project-code {
+        margin-top: 39px;
+        font-size: 21px;
+    }  
+}
+
+@media (max-width: 800px) {
+    .project {
+        &__editprofile {
+            max-width: 350px;
+            left: 50%;
+
+            &-result {
+                margin-top: 20px;
+                gap: 20px;
+            }
+
+            &-head {
+                margin-bottom: 10px;
+            }
+
+            input {
+                margin-bottom: 10px;
+            }
+
+            button {
+                font-size: 14px;
+                &[name="image"] {
+                    margin-bottom: 20px;
+                    padding: 7px 20px;
+                    max-width: max-content;
+                }
+
+                &[name="result"] {
+                    padding: 10px 30px;
+                    min-width: 40%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 620px) {
+    .project {
+        &__wrapper {
+            padding-top: 60px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        &__profile {
+            top: 10px;
+            right: 20px;
+
+            img {
+                width: 50px;
+            }
+
+            &-modal {
+                top: 60px;
+                right: 10px;
+                padding: 20px 30px;
+                gap: 15px;
+                font-size: 16px;
+                min-width: 290px;
+                max-width: 290px;
+            }
+        }
+
+        &__editprofile {
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 15px;
+            gap: 6px;
+            max-width: 310px;
+            font-size: 16px;
+        }
+
+        &__head {
+            font-size: 25px;
+        }
+    
+        &__project-code {
+            font-size: 16px;
+        }
+    }
+}

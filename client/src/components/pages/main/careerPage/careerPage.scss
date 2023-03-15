@@ -1,0 +1,262 @@
+.career {
+    margin: 0 auto;
+    padding: 105px 50px 0;
+    max-width: 1100px;
+    text-align: center;
+
+    h1 {
+        font-size: 34px;
+    }
+
+    &__positions {
+        margin-top: 135px;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+
+        &-single {
+            padding: 30px 30px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: left;
+            width: 300px;
+            height: 180px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%);
+            transition: .3s ease;
+            cursor: pointer;
+
+            &:hover {
+                box-shadow: 0 10px 10px 0 rgb(0 0 0 / 20%);
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+
+            p {
+                margin-top: 15px;
+                font-size: 14px;
+                line-height: 22px;
+            }
+
+            div[name='learn'] {
+                position: relative;
+                font-size: 14px;
+                padding: 5px 0;
+
+                &::after {
+                    content: '→';
+                    padding-left: 3px;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+
+    &__provide {
+        margin-top: 135px;
+        
+        h2 {
+            font-size: 34px;
+        }
+
+        &-list {
+            margin-top: 105px;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+
+            &-single {
+                width: 200px;
+                height: 150px;
+
+                img {
+                    margin: 0 auto;
+                    width: 40px;
+                }
+
+                p[name="name"] {
+                    margin: 20px 0;
+                    font-size: 18px;
+                    font-weight: 400;
+                }
+
+                p[name="descr"] {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+
+    &__about {
+        position: relative;
+        margin-top: 175px;
+        height: 450px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+        }
+
+        div {
+            position: absolute;
+            padding: 50px 50px 10px 50px;
+            bottom: 0;
+            right: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 470px;
+            height: 320px;
+            background-color: #ffffff;
+            text-align: left;
+
+            p[name='company'] {
+                font-size: 12px;
+                opacity: 0.5;
+            }
+
+            h4 {
+                font-size: 30px;
+            }
+
+            p[name="info"] {
+                font-size: 14px;
+                line-height: 20px;
+            }
+        }
+
+        a {
+            display: inline-block;
+            padding: 15px 50px;
+            width: fit-content;
+            font-size: 12px;
+            border: solid thin #3D3D3D;
+            border-radius: 30px;
+            transition: .5s ease;
+
+            &:hover {
+                background-color: #3D3D3D;
+                color: #ffffff;
+            }
+        }
+    }
+
+    &__beneath {
+        margin-top: 135px;
+
+        p {
+            margin: 0 auto;
+            width: 500px;
+            font-size: 20px; 
+        }
+
+        a {
+            margin-top: 50px;
+            font-size: 30px; 
+        }
+    }
+}
+
+@media (max-width: 1199px) {
+    .career {
+        &__positions {   
+            &-single {
+                padding: 25px 25px 15px;
+                width: 250px;
+                height: 160px;
+    
+                h3 {
+                    font-size: 16px;
+                }
+    
+                p {
+                    margin-top: 12px;
+                    font-size: 12px;
+                    line-height: 18px;
+                }
+    
+                div[name='learn'] {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .career {
+        &__positions {
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+    
+            &-single {
+                padding: 25px 25px 15px;
+                width: 500px;
+                height: 150px;
+            }
+        }
+
+        &__provide {
+            &-list {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+        }
+
+        &__about {
+            height: fit-content;
+
+            div {
+                position: static;
+                padding: 30px 20px;
+                gap: 25px;
+                width: fit-content;
+                height: fit-content;
+            }
+        }
+
+        &__beneath {
+            margin-top: 105px;
+        }
+    }
+}
+
+@media (max-width: 660px) {
+    .career {
+        padding: 105px 10px 0;
+
+        &__positions {    
+            &-single {
+                padding: 25px 25px 15px;
+                width: 100%;
+                height: fit-content;
+                min-height: 150px;
+
+                &:hover {
+                    box-shadow: 0 0px 10px 0 rgb(0 0 0 / 20%);
+                }
+            }
+        }
+
+        &__about {
+            a:hover {
+                &:hover {
+                    background-color: inherit;
+                    color: inherit;
+                }
+            }
+        }
+
+        &__beneath {
+            p {
+                width: fit-content;
+            }
+        }
+    }
+}
