@@ -37,7 +37,7 @@
       "react-app/jest"
     ]
   },
-  "proxy": "https://aio-hosting.onrender.com",
+  "proxy": "https://aio-hosting-back.onrender.com",
   "browserslist": {
     "production": [
       ">0.2%",
