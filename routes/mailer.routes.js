@@ -15,7 +15,7 @@ router.post(
                 secure: true,
                 auth: {
                     user: "info@aio.house",
-                    pass: "xandmzelpaaisctt",
+                    pass: "",
                 },
             });
             
@@ -54,7 +54,7 @@ router.post(
                 // secure: true,
                 // auth: {
                 //     user: "gitarist2303@mail.ru",
-                //     pass: "203keQWFXKWvrX01MDDx",
+                //     pass: "",
                 // },
 
                 host: "smtp.yandex.ru",
@@ -62,7 +62,7 @@ router.post(
                 secure: true,
                 auth: {
                     user: "info@aio.house",
-                    pass: "xandmzelpaaisctt",
+                    pass: "",
                 },
             });
 
