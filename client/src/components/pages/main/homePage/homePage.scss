@@ -33,7 +33,7 @@
                 border: solid thin #3D3D3D;
                 border-radius: 30px;
                 cursor: pointer;
-                transition: 0.3s ease;
+                transition: color 0.3s ease, background-color 0.3s ease;
 
                 &:hover {
                     color: #ffffff;
@@ -48,18 +48,12 @@
             img[alt='down-arrow'] {
                 width: 80px;
                 cursor: pointer;
-                transition: 0.3s ease;
-
-                &:hover {
-                    transform: scale(1.1);
-                }
             }
         }
     }
 
     &__info {
-        margin-top: 135px;
-        padding: 0px 60px;
+        margin-top: 95px;
         text-align: center;
         
         h1 {
@@ -75,11 +69,11 @@
 
         p {
             margin-top: 50px;
-            font-size: 20px;
+            font-size: 18px;
         }
 
         &-allow {
-            margin-top: 50px;
+            margin-top: 10px;
             display: flex;
             justify-content: space-between;
             gap: 20px;
@@ -87,23 +81,27 @@
 
             &-statistics {
                 display: flex;
-                gap: 50px;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 15px;
+                flex: 1;
 
                 div {
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
-                    gap: 50px;
+                    gap: 10px;
                     
                     span {
-                        text-align: right;
-                        width: 230px;
-                        font-size: 86px;
+                        text-align: center;
+                        width: 200px;
+                        font-size: 78px;
                     }
 
                     p {
                         margin: 0;
-                        line-height: 104px;
+                        font-size: 16px;
+                        line-height: 94px;
                     }
                 }
             }
@@ -113,14 +111,16 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                flex: 1;
 
                 img {
-                    width: 200px;
+                    width: 90%;
+                    min-width: 470px;
                     cursor: pointer;
-                    transition: .5s ease;
+                    transition: .3s ease;
 
                     &:hover {
-                        transform: scale(1.3);
+                        transform: scale(1.1);
                     }
                 }
             }
@@ -128,27 +128,27 @@
     }
 
     h2 {
-        font-size: 38px;
+        font-size: 32px;
     }
 
     &__platform {
-        margin-top: 135px;
+        margin-top: 95px;
         padding: 0px 50px;
 
         &-thread {
             overflow: hidden;
             position: relative;
-            margin: 105px auto 0;
+            margin: 75px auto 0;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             width: 1100px;
-            height: 2700px;
+            height: 2475px;
             min-width: 300px;
 
             img {
                 width: 1200px;
-                height: 100%;
+                height: auto;
                 position: absolute;
                 top: 0;
                 right: 50%;
@@ -186,26 +186,26 @@
                     }
 
                     p {
-                        font-size: 32px;
+                        font-size: 28px;
                     }
                 }
             }
 
             &-video1 {
                 position: absolute;
-                top: 58px;
+                top: 53px;
                 right: 83px;
                 width: 554px;
-                height: 387px;
+                height: 356px;
                 z-index: 1;
             }
 
             &-video2 {
                 position: absolute;
-                top: 1202px;
+                top: 1102px;
                 left: 70px;
                 width: 572px;
-                height: 297px;
+                height: 272px;
                 border-radius: 25px;
                 z-index: 1;
 
@@ -216,36 +216,35 @@
 
             &-video3 {
                 position: absolute;
-                bottom: 30px;
+                bottom: 27px;
                 right: 87px;
-                width: 548px;
-                height: 394px;
+                width: 549px;
+                height: 360px;
                 z-index: 1;
             }
         }
     }
 
     &__tour {
-        margin-top: 135px;
-        padding: 0 50px;
+        margin-top: 95px;
 
         &-enscape {
-            margin-top: 105px;
-            height: 500px;
+            margin-top: 75px;
 
             video {
+                width: 80%;
                 object-fit: contain;
             }
         }
     }
 
     &__map {
-        margin-top: 135px;
+        margin-top: 95px;
         padding: 0 30px;
 
         h3 {
             margin-top: 20px;
-            font-size: 20px;
+            font-size: 14px;
         }
 
         &-content {
@@ -294,7 +293,6 @@
     
                 img {
                     width: 1200px;
-                    height: 100%;
                 }
     
                 &-single {   
@@ -310,12 +308,12 @@
                 &-video1 {
                     top: 46px;
                     right: 72px;
-                    width: 478px;
-                    height: 307px;
+                    width: 479px;
+                    height: 308px;
                 }
     
                 &-video2 {
-                    top: 953px;
+                    top: 952px;
                     left: 60px;
                     width: 494px;
                     height: 236px;
@@ -327,7 +325,7 @@
                 }
     
                 &-video3 {
-                    bottom: 24px;
+                    bottom: 26px;
                     right: 76px;
                     width: 473px;
                     height: 311px;
@@ -339,10 +337,6 @@
 
 @media (max-width: 991px) {
     .home {
-        video {
-            height: auto;
-        }
-
         &__start {
             flex-direction: column;
             align-items: center;
@@ -367,16 +361,14 @@
             margin-top: 150px;
 
             &-allow {
+                margin-top: 50px;
                 flex-direction: column;
                 align-items: center;
-                gap: 30px;
+                gap: 10px;
 
-        
                 &-statistics {
-                    gap: 50px;
-    
                     div {
-                        gap: 50px;
+                        gap: 30px;
                         
                         span {
                             width: 160px;
@@ -403,11 +395,10 @@
     
             &-thread {
                 width: 630px;
-                height: 1400px;
+                height: 1420px;
     
                 img {
                     width: 1200px;
-                    height: 100%;
                 }
     
                 &-single {   
@@ -434,25 +425,34 @@
                 }
     
                 &-video1 {
-                    top: 30px;
+                    top: 29px;
                     right: 48px;
                     width: 317px;
-                    height: 202px;
+                    height: 205px;
                 }
     
                 &-video2 {
-                    top: 624px;
+                    top: 631px;
                     left: 40px;
                     width: 329px;
-                    height: 154px;
+                    height: 156px;
                     border-radius: 20px;
                 }
     
                 &-video3 {
-                    bottom: 15px;
+                    bottom: 18px;
                     right: 50px;
                     width: 314px;
-                    height: 205px;
+                    height: 207px;
+                }
+            }
+        }
+
+        &__tour {
+            &-enscape {
+                video {
+                    width: 100%;
+                    object-fit: contain;
                 }
             }
         }
@@ -473,7 +473,7 @@
             }
 
             p {
-                font-size: 18px;
+                font-size: 16px;
             }
 
             &-allow {
@@ -494,6 +494,13 @@
                         }
                     }
                 }
+
+                &-threed {
+                    img {
+                        width: 80%;
+                        min-width: auto;
+                    }
+                }
             }
         }
 
@@ -507,7 +514,6 @@
     
                 img {
                     width: 1200px;
-                    height: 100%;
                 }
     
                 &-single {   
@@ -585,8 +591,16 @@
     }    
 }
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
     .home {
+        &__info {
+            &-allow {
+                &-statistics {
+                    gap: 10px;
+                }
+            }
+        }
+
         &__platform {
 
             video {
@@ -699,4 +713,28 @@
             }
         }
     }    
+}
+
+@media (max-width: 380px) {
+    .home {
+        &__info {
+            &-allow {
+                &-statistics {                    
+                    div {
+                        gap: 20px;
+                        
+                        span {
+                            width: 100px;
+                            font-size: 36px;
+                        }
+    
+                        p {
+                            font-size: 12px;
+                            line-height: 43px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

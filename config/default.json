@@ -1,5 +1,6 @@
 {
     "port": 5000,
     "mongoUri": "mongodb+srv://kakuzmin23:1nROZJFfGzGM6PFO@aio-server.ua97xrn.mongodb.net/?retryWrites=true&w=majority",
-    "jwtSecret": "aio gemiegkise"
+    "jwtSecret": "aio gemiegkise",
+    "baseURL": "http://localhost:5000"
 }

@@ -186,7 +186,7 @@ const ServicesPage = () => {
                                 <Field type="radio" name="service" id="individual" value='individual'
                                     data-value='15' 
                                     checked={formik.values.service === 'individual'}
-                                    onChange={formik.handleChange}/>
+                                    onChange={formik.handleChange}></Field>
                                 Individual design
                             </label>
                             <label htmlFor="dimension">

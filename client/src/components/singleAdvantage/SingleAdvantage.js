@@ -11,7 +11,7 @@ const SingleAdvantage = ({data}) => {
             root: document.querySelector('main'),
             rootMargin: '0px',
             threshold: 1.0
-        }
+        };
 
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {

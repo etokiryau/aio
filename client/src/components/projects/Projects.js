@@ -6,15 +6,15 @@ import "./projects.scss";
 
 const Projects = () => {
 
-    const renderSlides = (data) => {
-        const content = data.map((item, i) => {
+    const renderProjects = (data) => {
+        const content = data.map((item) => {
             const id = item.name.toLowerCase().replace(' ', '_');
 
             const sliderOptions = {
                 preview: true,
                 arrows: true,
                 appearence: 'single'
-            }
+            };
             
             return (
                 <div key={id} className="projects__single">
@@ -36,7 +36,7 @@ const Projects = () => {
         return content;
     }
 
-    const content = renderSlides(data);
+    const content = renderProjects(data);
     
     return (
         <div className="projects">

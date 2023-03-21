@@ -13,8 +13,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
 
             img {
                 object-fit: contain;
@@ -195,7 +195,7 @@
 
     &-zoom {
         position: fixed;
-        padding: 10px 80px;
+        // padding: 10px 80px;
         top: 0;
         left: 0;
         width: 100%;
@@ -215,10 +215,10 @@
                 height: 100%;
                 object-fit: contain;
                 opacity: 0;
-                transition: 0.5s ease-in-out;
+                transition: opacity 0.5s ease-in-out;
 
                 &.active {
-                    opacity: 1;;
+                    opacity: 1;
                 }
             }
         }

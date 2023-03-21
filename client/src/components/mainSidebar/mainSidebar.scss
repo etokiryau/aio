@@ -68,24 +68,24 @@ aside#main {
         }
 
         &__content {
-            padding: 48px 40px 40px 40px;
+            padding: 48px 30px 40px 30px;
             position: fixed;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            width: 230px;
+            width: 200px;
             height: 100%;
             top: 0%;
             right: 0;
             z-index: 61;
             background-color: #ffffff;
-            font-size: 20px;
+            font-size: 18px;
             transition: .5s ease-in-out;
 
             ul {
                 display: flex;
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
 
                 li {
                     width: fit-content;
@@ -126,6 +126,15 @@ aside#main {
                         width: 30px;
                     }
                 }
+                
+                a {
+                    transition: .5s ease;
+
+                    &:hover {
+                        color: rgba($color: #c7c7c7, $alpha: 1.0);
+                    }
+                }
+                
             }
         }
     }

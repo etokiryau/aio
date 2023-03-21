@@ -1,8 +1,10 @@
 .projects {
-    padding: 105px 50px 30px 50px;
+    margin: 0 auto;
+    padding: 105px 10px 30px 10px;
     display: flex;
     flex-direction: column;
-    gap: 250px;
+    gap: 300px;
+    max-width: 1000px;
 
     &__single {
         display: flex;
@@ -10,7 +12,7 @@
 
         &-slider {
             flex: 2;
-            height: 400px;
+            height: 450px;
         }
         
         &-description {

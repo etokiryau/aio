@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import aioLogo from './img/aioLogo.png';
@@ -21,23 +21,47 @@ import mainVideoEnscape from './video/mainVideoEnscape.mp4';
 import './homePage.scss';
 
 const HomePage = () => {
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
     const videoRefs = useRef([]);
     const platformRef = useRef(null);
     const infoRef = useRef(null);
 
     const handleFocus = (ref) => {
         window.scrollTo({
-            top: ref.current.offsetTop - 100,
+            top: ref.current.offsetTop - 50,
             behavior: 'smooth'
         });
-    }
+    };
+    
+    useEffect(() => {
+        const handleScroll = () => {
+            const position = window.pageYOffset;
+            setScrollPosition(position);
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+    
+        const handleResize = () => {
+            const width = window.innerWidth;
+            setWindowWidth(width);
+        };
+    
+        window.addEventListener('resize', handleResize);
+    
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     useEffect(() => {
         const options = {
             root: document.querySelector('main'),
             rootMargin: '0px',
-            threshold: 1.0
-        }
+            threshold: 0.1
+        };
 
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -58,17 +82,35 @@ const HomePage = () => {
         };
     }, []);
 
+    const translationVelocity = 1.5;
+
+    const transformVideoStyle = windowWidth > 991 ? {
+        transform: `translateX(${-scrollPosition * translationVelocity}px)`
+    } : {};
+    
+    const transformLogoStyle = windowWidth > 991 ? {
+        transform: scrollPosition > 100 ? `translateX(${-(scrollPosition - 100) * translationVelocity}px)` : 'none'
+    }: {};
+
+    const transformButtonStyle = windowWidth > 991 ? {
+        transform: scrollPosition > 200 ? `translateX(${-(scrollPosition - 200) * translationVelocity}px)` : 'none'
+    } : {};
+
+    const transformArrowStyle = windowWidth > 991 ? {
+        transform: scrollPosition > 400 ? `translateX(${-(scrollPosition - 400) * translationVelocity}px)` : 'none'
+    } : {};
+
     return (
         <div className="home">
             <div className="home__start">
-                <div className="home__start-video">
+                <div className="home__start-video" style={transformVideoStyle}>
                     <video ref={el => videoRefs.current[0] = el} src={mainVideo} type="video/mp4" preload="auto" data-autoplay playsInline autoPlay loop muted></video>
                 </div>
                 
                 <div className="home__start-navigate">
-                    <img src={aioLogo} alt="logo" />
-                    <Link to="/projects">High-tech projects of cottages</Link>
-                    <img onClick={() => handleFocus(infoRef)} src={downArrow} alt="down-arrow" />
+                    <img src={aioLogo} alt="logo" style={transformLogoStyle}/>
+                    <Link to="/projects" style={transformButtonStyle}>High-tech projects of cottages</Link>
+                    <img onClick={() => handleFocus(infoRef)} src={downArrow} alt="down-arrow" style={transformArrowStyle} />
                 </div>
             </div>
 

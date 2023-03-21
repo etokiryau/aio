@@ -9,6 +9,8 @@ import './slideCarousel.scss';
 const SlideCarousel = ({slides, options: { preview = false, arrows, dots, appearence = 'single', objectFit = 'cover', zooming = true, arrowColor = true}}) => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isZoomedView, setIsZoomedView] = useState(false);
+    const [isExploringView, setIsExploringView] = useState(false);
+    const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
 
     const slidesNumber = slides.length;
 
@@ -19,6 +21,23 @@ const SlideCarousel = ({slides, options: { preview = false, arrows, dots, appear
     useEffect(() => {
         document.body.style.overflow = isZoomedView ? "hidden" : "visible";
     }, [isZoomedView]);
+
+    // useEffect(() => {
+    //     const handleMouseMove = (event) => {
+    //         console.log(window)
+    //         const { innerWidth, innerHeight } = window;
+    //         const { left, top } = event.target.getBoundingClientRect();
+    //         const x = left;
+    //         const y = top;
+    //         setImagePosition({ x, y });
+    //     };
+    
+    //     document.addEventListener("mousemove", handleMouseMove);
+    
+    //     return () => {
+    //         document.removeEventListener("mousemove", handleMouseMove);
+    //     };
+    // }, []);
 
     const dotsStyle = {display: dots && appearence === 'single' && slidesNumber > 1 ? '' : 'none'};
     const arrowStyle = {
@@ -32,7 +51,20 @@ const SlideCarousel = ({slides, options: { preview = false, arrows, dots, appear
     };
     const imageStyle = {
         objectFit: objectFit,
-        cursor: zooming ? 'zoom-in' : ''
+        cursor: zooming ? 'zoom-in' : '', 
+    };
+    const imageZoomedStyle = {
+        // width: isExploringView ? 'auto' : '100%',
+        // height: isExploringView ? 'auto' : '100%',
+        // left: isExploringView ? `${imagePosition.x * 0.8}px`: '0',
+        // top: isExploringView ? `${imagePosition.y * 0.8}px` : '0',
+        cursor: isExploringView ? 'zoom-out' : 'zoom-in',
+        // objectFit: isExploringView ? 'none' : 'contain'
+    };
+
+    const zoomContainerStyle = {
+        display: isZoomedView ? 'block' : 'none',
+        padding: isExploringView ? '0' : '10px 80px'
     };
 
     const setZooming = () => {
@@ -41,17 +73,23 @@ const SlideCarousel = ({slides, options: { preview = false, arrows, dots, appear
         }
     };
 
+    const toggleExploringView = () => {
+        if (isZoomedView) {
+            setIsExploringView(!isExploringView);
+        }
+    };
+
     const handleClick = (id) => {
         switch (id) {
             case 'prev':
-                if (currentSlide == 0) {
+                if (currentSlide === 0) {
                     setCurrentSlide(slides.length - 1);
                 } else {
                     setCurrentSlide(currentSlide - 1);
                 }
                 break;
             case 'next':
-                if (currentSlide == slides.length - 1) {
+                if (currentSlide === slides.length - 1) {
                     setCurrentSlide(0);
                 } else {
                     setCurrentSlide(currentSlide + 1);
@@ -132,15 +170,21 @@ const SlideCarousel = ({slides, options: { preview = false, arrows, dots, appear
                 : null
             }
             
-            <div className="slider-zoom" style={{display: isZoomedView? 'block' : 'none'}}>
+            <div className="slider-zoom" style={zoomContainerStyle}>
                 <div className="slider-zoom-current">
                     {slides.map((slide, i) => (
-                        <img key={i} src={slide} alt={`slide${i + 1}`} className={`${i === currentSlide ? 'active' : ''}`}/>
+                        <img 
+                            key={i} 
+                            src={slide} 
+                            alt={`slide${i + 1}`}
+                            onClick={toggleExploringView}
+                            style={imageZoomedStyle}
+                            className={`${i === currentSlide ? 'active' : ''}`}/>
                     ))}
                 </div>
 
-                <div name="zoom" onClick={toggleZoomedView}>
-                    <img src={zoomIn} alt="zoom-in" />
+                <div name="zoom" onClick={toggleExploringView}>
+                    <img src={isExploringView ? zoomOut : zoomIn} alt="zoom-in" />
                 </div>
                 <div name="close" onClick={toggleZoomedView}>
                     <img src={close} alt="close" />

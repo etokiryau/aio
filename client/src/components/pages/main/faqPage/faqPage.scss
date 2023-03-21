@@ -5,12 +5,12 @@
     text-align: center;
 
     h1 {
-        font-size: 34px;
+        font-size: 32px;
     }
 
     h2 {
         margin-top: 30px;
-        font-size: 20px;
+        font-size: 18px;
     }
 
     &__list {
@@ -18,10 +18,10 @@
 
         &-line {
             height: 1px;
-            background-color: rgb(238, 238, 238);;
+            background-color: rgb(238, 238, 238);
         }
 
-        &-single {           
+        &-single {       
             &-head {
                 padding: 20px 0px;
                 display: flex;
@@ -60,7 +60,7 @@
                 overflow: hidden;
                 max-height: 0px;
                 text-align: left;
-                transition: all 1s ease-in;
+                transition: all .5s linear;
 
                 ul {
                     text-align: left;
@@ -75,7 +75,7 @@
                 }
 
                 &.active {
-                    max-height: 1000px;
+                    max-height: 84px;
                 }
 
                 div[name='list-single'] {
@@ -175,7 +175,18 @@
 
 @media (max-width: 660px) {
     .faq {
-        padding: 105px 10px 0;
+        margin: 0 10px;
+        padding: 105px 0px 0px;
+
+        &__list {   
+            &-single {       
+                div[name='list'] {
+                    &.active {
+                        max-height: 120px;
+                    }
+                }
+            }
+        }
 
         &__beneath {
             padding: 0 55px;
@@ -190,6 +201,40 @@
     
                     p {
                         color: inherit;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .faq {
+        margin: 0 10px;
+        padding: 105px 0px 0px;
+
+        &__list {   
+            &-single {       
+                div[name='list'] {
+                    &.active {
+                        max-height: 150px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 280px) {
+    .faq {
+        margin: 0 10px;
+        padding: 105px 0px 0px;
+
+        &__list {   
+            &-single {       
+                div[name='list'] {
+                    &.active {
+                        max-height: 330px;
                     }
                 }
             }

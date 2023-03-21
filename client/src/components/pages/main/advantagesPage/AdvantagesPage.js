@@ -45,7 +45,6 @@ const AdvantagesPage = () => {
         }
     ];
 
-
     return (
         <div className="advantages">
             <h1>The main advantages of our projects</h1>

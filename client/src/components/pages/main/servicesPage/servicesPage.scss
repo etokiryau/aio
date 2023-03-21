@@ -3,12 +3,12 @@
     text-align: center;
 
     h1 {
-        font-size: 34px;
+        font-size: 32px;
     }
 
     h2 {
         margin-top: 30px;
-        font-size: 20px;
+        font-size: 18px;
     }
 
     &__form {
@@ -38,6 +38,7 @@
                 gap: 10px;
                 font-size: 12px;
                 line-height: 20px;
+                cursor: pointer;
 
                 div {
                     position: absolute;
@@ -53,8 +54,8 @@
                 position: relative;
                 appearance: none;
                 -webkit-appearance: none;
-                height: 1.25em;
-                width: 1.25em;
+                height: 14px;
+                min-width: 14px;
                 border-radius: 50%;
                 border: solid thin rgba(166, 166, 166, 0.4);
                 transform: translateY(2px);
@@ -63,14 +64,14 @@
 
                 &::before {
                     position: absolute;
-                    top: 20%;
-                    left: 24%;
+                    top: 50%;
+                    left: 50%;
                     content: "";
-                    width: 0.65em;
-                    height: 0.65em;
+                    min-width: 8px;
+                    height: 8px;
                     border-radius: 50%;
-                    transform: scale(0);
-                    transition: 120ms transform ease-in-out;
+                    transform: translate(-50%, -50%) scale(0);
+                    transition: 120ms ease-in-out;
                     background-color: #3D3D3D;
                 }
 
@@ -78,7 +79,8 @@
                     border: solid thin #3D3D3D;
 
                     &::before {
-                        transform: scale(1);
+                        opacity: 1;
+                        transform: translate(-50%, -50%) scale(1);
                     }
                 }
             }
@@ -232,16 +234,16 @@
     }
 }
 
-@media (max-width: 991px) {
-    .services {
-        input[type='radio'] {
-            &::before {
-                top: 20%;
-                left: 20%;
-            }
-        }
-    }
-}
+// @media (max-width: 991px) {
+//     .services {
+//         input[type='radio'] {
+//             &::before {
+//                 top: 20%;
+//                 left: 20%;
+//             }
+//         }
+//     }
+// }
 
 @media (max-width: 660px) {
     .services {

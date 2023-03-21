@@ -1,9 +1,9 @@
 .advantages {
-    padding: 105px 0;
+    padding: 105px 10px;
     text-align: center;
 
     h1 {
-        font-size: 38px;        
+        font-size: 32px;        
     }
 
     &__list {
@@ -29,6 +29,9 @@
 
         &-indicators {
             margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
 
             &-single {
                 margin-bottom: 30px;
@@ -36,6 +39,7 @@
                 flex-direction: column;
                 gap: 15px;
                 align-items: center;
+                width: 305px;
 
                 p {
                     font-size: 18px;
@@ -105,6 +109,20 @@
                 .advantage__info {
                     order:inherit;
                 }   
+            }
+        }
+
+        &__benefits {
+            &-indicators {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                
+                gap: 20px;
+
+                &-single {
+                    width: fit-content;
+                }
             }
         }
     }

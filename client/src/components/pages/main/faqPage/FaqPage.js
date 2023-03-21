@@ -1,10 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import CustomLink from "../../../../utilis/CustomLink";
 
 import "./faqPage.scss";
 
 const FaqPage = () => {
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    useEffect(() => {    
+        const handleResize = () => {
+            const width = window.innerWidth;
+            setWindowWidth(width);
+        };
+    
+        window.addEventListener('resize', handleResize);
+    
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     const [isListOpened, setIsListOpened] = useState({
         'pay': false,
@@ -63,7 +77,7 @@ const FaqPage = () => {
                         <div className="faq__list-single-head-plus"
                             style={{transform: isListOpened.inclusion ? 'rotate(-45deg)' : 'none'}}>+</div>
                     </div>
-                    <div name='list' className={isListOpened.inclusion ? 'active' : ''}>
+                    <div name='list' style={{maxHeight: isListOpened.inclusion ? `${windowWidth > 340 ? '1000px' : '2000px'}` : '0'}}>
                     <div name='list-single'>
                             <p>Power supply system:</p>
                             <ul>
@@ -129,7 +143,7 @@ const FaqPage = () => {
                         <div className="faq__list-single-head-plus"
                             style={{transform: isListOpened.electronic ? 'rotate(-45deg)' : 'none'}}>+</div>
                     </div>
-                    <div name='list' className={isListOpened.electronic ? 'active' : ''}>
+                    <div onMouseMove={(e) => console.log(e)} name='list' className={isListOpened.electronic ? 'active' : ''}>
                         <ul>
                             <li>Yes, the project is available in electronic form immediately after purchase in your account</li>
                         </ul>
