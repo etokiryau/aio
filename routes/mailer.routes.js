@@ -15,7 +15,7 @@ router.post(
                 secure: true,
                 auth: {
                     user: "info@aio.house",
-                    pass: "",
+                    pass: "xandmzelpaaisctt",
                 },
             });
             
@@ -62,7 +62,7 @@ router.post(
                 secure: true,
                 auth: {
                     user: "info@aio.house",
-                    pass: "",
+                    pass: "xandmzelpaaisctt",
                 },
             });
 
