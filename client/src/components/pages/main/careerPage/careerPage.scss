@@ -1,7 +1,8 @@
 .career {
     margin: 0 auto;
     padding: 105px 50px 0;
-    max-width: 1150px;
+    width: 80%;
+    max-width: 1500px;
     text-align: center;
 
     h1 {
@@ -11,7 +12,7 @@
     &__positions {
         margin-top: 135px;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         gap: 30px;
 
         &-single {
@@ -57,7 +58,7 @@
     }
 
     &__provide {
-        margin-top: 135px;
+        margin: 135px auto 0;
         
         h2 {
             font-size: 32px;
@@ -67,7 +68,7 @@
             margin: 105px auto 0;
             display: flex;
             justify-content: space-between;
-            max-width: 1000px;
+            
 
             &-single {
                 width: 200px;
@@ -232,6 +233,7 @@
 @media (max-width: 660px) {
     .career {
         padding: 105px 10px 0;
+        width: 100%;
 
         &__positions {    
             &-single {

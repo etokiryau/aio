@@ -38,7 +38,8 @@
         justify-content: flex-start;
         flex-wrap: wrap;
         gap: 30px;
-        max-width: 1150px;
+        width: 80%;
+        max-width: 1500px;
 
         &-single {
             width: 280px;
@@ -83,5 +84,13 @@
   
     100% {
       transform: translateY(-5px) translateX(-50%);;
+    }
+}
+
+@media (max-width: 660px) {
+    .blog {
+        &__articles {
+            width: 100%
+        }
     }
 }

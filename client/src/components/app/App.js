@@ -6,8 +6,9 @@ import { AuthProvider } from "../auth/AuthProvider";
 import RequireAuth from "../auth/RequireAuth";
 import { useChangeTitle } from "../../hooks/useChangeTitle";
 
-import { ProjectPage, DocumentationPage, BuildingPage, SmartHousePage, SupportPage } from "../pages/account";
-import { HomePage, AdvantagesPage, ServicesPage, BlogPage, CareerPage, ContactsPage, FaqPage, PolicyPage, ProjectsPage, SingleProjectPage} from "../pages/main";
+// import { ProjectPage, DocumentationPage, BuildingPage, SmartHousePage, SupportPage } from "../pages/account";
+// import { HomePage, AdvantagesPage, ServicesPage, BlogPage, CareerPage, ContactsPage, FaqPage, PolicyPage, ProjectsPage, SingleProjectPage} from "../pages/main";
+import { HomePage } from "../pages/main";
 
 const MainPageLayout = lazy(() => import("../mainPageLayout/MainPageLayout"));
 const LoginPage = lazy(() => import("../pages/loginPage/LoginPage"));
@@ -16,6 +17,21 @@ const Page404 = lazy(() => import("../pages/page404/Page404"));
 const SolutionViewerPage = lazy(() => import("../pages/account/solutionViewerPage/SolutionViewerPage"));
 const PlatformInstructionsPage = lazy(() => import("../pages/main/platformInstructionsPage/PlatformInstructionsPage"));
 const MapPage = lazy(() => import("../pages/mapPage/MapPage"));
+const AdvantagesPage = lazy(() => import("../pages/main/advantagesPage/AdvantagesPage"));
+const ServicesPage = lazy(() => import("../pages/main/servicesPage/ServicesPage"));
+const BlogPage = lazy(() => import("../pages/main/blogPage/BlogPage"));
+const CareerPage = lazy(() => import("../pages/main/careerPage/CareerPage"));
+const ContactsPage = lazy(() => import("../pages/main/contactsPage/ContactsPage"));
+const FaqPage = lazy(() => import("../pages/main/faqPage/FaqPage"));
+const PolicyPage = lazy(() => import("../pages/main/policyPage/PolicyPage"));
+const ProjectsPage = lazy(() => import("../pages/main/ProjectsPage"));
+const SingleProjectPage = lazy(() => import("../pages/main/singleProjectPage/SingleProjectPage"));
+
+const ProjectPage = lazy(() => import("../pages/account/ProjectPage"));
+const DocumentationPage = lazy(() => import("../pages/account/DocumentationPage"));
+const BuildingPage = lazy(() => import("../pages/account/buildingPage/BuildingPage"));
+const SmartHousePage = lazy(() => import("../pages/account/SmartHousePage"));
+const SupportPage = lazy(() => import("../pages/account/SupportPage"));
 
 
 function App() {

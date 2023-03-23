@@ -4,7 +4,8 @@
     display: flex;
     gap: 10px;
     text-align: left;
-    max-width: 1150px;
+    width: 80%;
+    max-width: 1500px;
 
     h3 {
         margin-top: 15px;
@@ -86,5 +87,6 @@
 @media (max-width: 660px) {
     .advantage {
         padding: 0 10px;
+        width: 100%;
     }
 }
