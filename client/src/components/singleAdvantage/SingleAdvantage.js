@@ -10,7 +10,7 @@ const SingleAdvantage = ({data}) => {
         const options = {
             root: document.querySelector('main'),
             rootMargin: '0px',
-            threshold: 1.0
+            threshold: 0.6
         };
 
         const observer = new IntersectionObserver(entries => {

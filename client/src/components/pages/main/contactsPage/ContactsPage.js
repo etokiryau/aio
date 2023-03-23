@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { Formik, Field, Form } from 'formik';
 
 import { useHttp } from "../.././../../hooks/http.hook";
+import MediaStub from '../../../mediaStub/MediaStub';
 
 import mobilePicture from './img/mobilePicture.svg';
 import mailPicture from './img/mailPicture.svg';
@@ -62,11 +63,15 @@ const ContactsPage = () => {
 
             <div className="contacts__media">
                 <h2>Our social networks</h2>
-                <div>
-                    <a href=""><img src={instagramLogo} alt="instagram" /></a>
+                <div className="contacts__media-logos">
+                    <MediaStub src={instagramLogo} alt={"instagram"}/>
+                    <MediaStub src={facebookLogo} alt={"facebook"}/>
+                    <MediaStub src={youtubeLogo} alt={"youtube"}/>
+                    <MediaStub src={linkedinLogo} alt={"linkedin"}/>
+                    {/* <a href=""><img src={instagramLogo} alt="instagram" /></a>
                     <a href=""><img src={facebookLogo} alt="facebook" /></a>
                     <a href=""><img src={youtubeLogo} alt="youtube" /></a>
-                    <a href=""><img src={linkedinLogo} alt="linkedin" /></a>
+                    <a href=""><img src={linkedinLogo} alt="linkedin" /></a> */}
                 </div>
             </div>
 

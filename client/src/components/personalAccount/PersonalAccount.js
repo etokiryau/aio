@@ -14,7 +14,7 @@ const PersonalAccount = () => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isEditProfileOpen, setIsEditProfileOpen] = useState(false);
-    const [tempUser, setTempUser] = useState({name: 'Kirill', email: ''})
+    const [user, setUser] = useState({name: 'Your name', email: 'Your email'})
 
     const modalRef = useRef(null);
     const editProfileRef = useRef(null);
@@ -36,7 +36,7 @@ const PersonalAccount = () => {
 
     const handleSubmitEditProfile = (data) => {
         // user.email = data.email;
-        setTempUser({...tempUser, ...data});
+        setUser({...user, ...data});
         setIsEditProfileOpen(false);
         setIsModalOpen(true);
     };
@@ -65,8 +65,8 @@ const PersonalAccount = () => {
                 <img onClick={() => toggleModal()} src={icon} alt="project icon" />
                 <div style={{'display': isModalOpen ? 'flex' : 'none'}} className="project__profile-modal">
                     <div>
-                        <p name="name">{tempUser.name}</p>
-                        <p>({tempUser.email})</p>
+                        <p name="name">{user.name}</p>
+                        <p>({user.email})</p>
                     </div>
                     <div>
                         <p onClick={toggleEditProfile} className="project__profile-modal-link">Edit profile</p>
@@ -91,7 +91,7 @@ const PersonalAccount = () => {
                     <img onClick={toggleEditProfile} className="project__editprofile-closebtn" src={close} alt="close" />
                     <h2 className="project__editprofile-head">Profile</h2>
                     <Formik
-                        initialValues={tempUser}
+                        initialValues={user}
                         onSubmit={handleSubmitEditProfile}
                     >
                         <Form className="project__editprofile-form">

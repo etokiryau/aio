@@ -12,14 +12,49 @@
             transform: scale(1.1);
         }  
     }
+
+    .preloader {
+        position: fixed;
+        top: 0;
+        height: 100vh;
+        visibility: hidden;
+        opacity: 0;
+        transition: 2s ease-in-out;
+        z-index: 1000;
+
+        &.active {
+            animation: 5s ease-in backwards preload
+        }
+    }
+}
+
+@keyframes preload {
+    0% {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    80% {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    90% {
+        visibility: visible;
+        opacity: .5;
+    }
+
+    100% {
+        visibility: hidden;
+        opacity: 0;
+    }
 }
 
 @media (max-width: 660px) {
     .main {
         .home-btn {
-            &:hover {
-                transform: none;
-            }
+            display: none;
         }
     }
 }
+

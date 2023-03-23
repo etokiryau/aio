@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import CustomNavLink from '../../utilis/CustomNavLink';
 import { AuthContext } from '../../context/AuthContext';
+import MediaStub from "../mediaStub/MediaStub";
 
 import instagramLogo from '../footer/img/instagramLogo.png';
 import facebookLogo from '../footer/img/facebookLogo.png';
@@ -48,9 +49,12 @@ const MainSidebar = () => {
 
                 <div className="aside__content-beneath">
                     <div className="aside__content-beneath-media">
-                        <a href=""><img src={instagramLogo} alt="instagram" /></a>
+                        <MediaStub src={instagramLogo} alt={"instagram"}/>
+                        <MediaStub src={facebookLogo} alt={"facebook"}/>
+                        <MediaStub src={linkedinLogo} alt={"linkedin"}/>
+                        {/* <a href=""><img src={instagramLogo} alt="instagram" /></a>
                         <a href=""><img src={facebookLogo} alt="facebook" /></a>
-                        <a href=""><img src={linkedinLogo} alt="linkedin" /></a>
+                        <a href=""><img src={linkedinLogo} alt="linkedin" /></a> */}
                     </div>
                     <Link to={pathname}>Login</Link>
                     <p>En</p>

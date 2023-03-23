@@ -1,5 +1,5 @@
 .advantages {
-    padding: 105px 10px;
+    padding-top: 105px;
     text-align: center;
 
     h1 {
@@ -45,47 +45,18 @@
                     font-size: 18px;
                     font-weight: 400;
                 }              
-
-                &-ring {
-                    transform: rotate(270deg);
-                    width: 150px;
-                    height: 150px;
-                    
-                    svg {
-                        circle {
-                            width: 100%;
-                            height: 100%;
-                            fill: transparent;
-                            stroke-width: 15;
-                            stroke: #E6E6E6;
-                            stroke-linecap: round;
-                            
-
-                            &:nth-child(2) {
-                                stroke: #3D3D3D;
-                                stroke-dasharray: 377;
-                            }
-                        }
-                    }
-
-                    p[name='progress']{
-                        position: absolute;
-                        inset: 0;
-                        font-size: 26px;
-                        transform: rotate(-270deg);
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
-                }
             }
         }
 
         &-conclusion {
             margin-top: 135px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px 80px;
 
             a {
-                margin: 20px auto 0;
                 padding: 15px 50px;
                 display: inline-block;
                 border: solid thin #3D3D3D;

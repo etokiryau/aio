@@ -1,7 +1,7 @@
 .contacts {
     margin: 0 auto;
     padding: 105px 10px 0;
-    max-width: 1000px;
+    max-width: 1150px;
     text-align: center;
 
     h3 {
@@ -34,14 +34,14 @@
     &__media {
         margin-top: 75px;
 
-        div {
+        &-logos {
             margin-top: 50px;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 15px;
 
-            a {
+            img {
                 width: 50px;
             }
         }

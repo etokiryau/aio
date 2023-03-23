@@ -90,7 +90,7 @@ const SingleProjectPage = () => {
                 <div className='project__info-right'>
                     <p>${project.reducedPrice}</p>
                     <p>${project.price}</p>
-                    <CustomLink to={project.reducedPrice === 0 ? '/project' : '/projects'}>{project.reducedPrice === 0 ? 'Free' : 'Buy'}</CustomLink>
+                    <CustomLink to={project.reducedPrice === 0 ? '/project' : ''}>{project.reducedPrice === 0 ? 'Free' : 'Buy'}</CustomLink>
                 </div>
             </div>
 

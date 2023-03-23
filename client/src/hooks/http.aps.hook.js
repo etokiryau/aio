@@ -12,7 +12,7 @@ export const useHttpAps = () => {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: `client_id=${clientId}&client_secret=${clientSecret}&grant_type=client_credentials&scope=data:read`,
+                body: `client_id=${clientId}&client_secret=${clientSecret}&grant_type=client_credentials&scope=data:read data:write data:create bucket:read bucket:create`,
             })
 
             if (!response.ok) {

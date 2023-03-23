@@ -212,7 +212,7 @@ const ServicesPage = () => {
                                 <Field type="range" name="area" id="area" min="-1450" max="1450" step="25" 
                                     value={formik.values.area} 
                                     onChange={formik.handleChange}
-                                    style={{backgroundSize: `${(formik.values.area + 1450 ) * 100 / 2900}%`}} />
+                                    style={{backgroundSize: `${(formik.values.area + 1450 ) * 100 / 2900}% 100%`}} />
                             </label>
                             <datalist id="range">
                                 <option value="100" label="100"></option>
@@ -221,7 +221,7 @@ const ServicesPage = () => {
                         </div>
 
                         <div className="services__form-single">
-                            <p>Basic services</p>
+                            <p>Select design sections</p>
                             <label htmlFor="section-individual">
                                 <Field type="checkbox" name="sections" id="section-individual" value="architecture"
                                     data-value='0.4'

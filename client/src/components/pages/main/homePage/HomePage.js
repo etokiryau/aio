@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+
+import CustomLink from '../../../../utilis/CustomLink';
 
 import aioLogo from './img/aioLogo.png';
-import downArrow from './img/downArrow.png';
+import downArrow from './img/downArrow.svg';
 import threeDIcon from './img/threeDIcon.png';
 import deviceThread from './img/deviceThread.png';
 import laptop from './img/laptop.png';
@@ -84,33 +85,25 @@ const HomePage = () => {
 
     const translationVelocity = 1.5;
 
-    const transformVideoStyle = windowWidth > 991 ? {
-        transform: `translateX(${-scrollPosition * translationVelocity}px)`
-    } : {};
-    
-    const transformLogoStyle = windowWidth > 991 ? {
-        transform: scrollPosition > 100 ? `translateX(${-(scrollPosition - 100) * translationVelocity}px)` : 'none'
-    }: {};
-
-    const transformButtonStyle = windowWidth > 991 ? {
-        transform: scrollPosition > 200 ? `translateX(${-(scrollPosition - 200) * translationVelocity}px)` : 'none'
-    } : {};
-
-    const transformArrowStyle = windowWidth > 991 ? {
-        transform: scrollPosition > 400 ? `translateX(${-(scrollPosition - 400) * translationVelocity}px)` : 'none'
-    } : {};
+    const setTransformStyle = (position) => {
+        return windowWidth > 991 ? {
+            transform: scrollPosition > position ? `translateX(${-(scrollPosition - position) * translationVelocity}px)` : 'none'
+        } : {};
+    }
 
     return (
         <div className="home">
             <div className="home__start">
-                <div className="home__start-video" style={transformVideoStyle}>
+                <div className="home__start-video" style={setTransformStyle(0)}>
                     <video ref={el => videoRefs.current[0] = el} src={mainVideo} type="video/mp4" preload="auto" data-autoplay playsInline autoPlay loop muted></video>
                 </div>
                 
                 <div className="home__start-navigate">
-                    <img src={aioLogo} alt="logo" style={transformLogoStyle}/>
-                    <Link to="/projects" style={transformButtonStyle}>High-tech projects of cottages</Link>
-                    <img onClick={() => handleFocus(infoRef)} src={downArrow} alt="down-arrow" style={transformArrowStyle} />
+                    <img src={aioLogo} alt="logo" style={setTransformStyle(100)}/>
+                    <CustomLink to="/projects" style={setTransformStyle(200)}>High-tech projects of cottages</CustomLink>
+                    <div onClick={() => handleFocus(infoRef)} style={setTransformStyle(400)}>
+                        <img  src={downArrow} alt="down-arrow"  />
+                    </div>    
                 </div>
             </div>
 
@@ -120,15 +113,19 @@ const HomePage = () => {
                 <p>A solution that will allow you to:</p>
                 <div className="home__info-allow">
                     <div className="home__info-allow-statistics">
-                        <div>
-                            <span>15%</span>
-                            <span>30%</span>
-                            <span>100%</span>
-                        </div>
-                        <div>
-                            <p>Saving money</p>
-                            <p>Reducing construction time</p>
-                            <p>Better quality project</p>
+                        <div className="home__info-allow-statistics-wrapper">
+                            <CustomLink to="/advantages">
+                                <span>15%</span>
+                                <p>Saving money</p>
+                            </CustomLink>
+                            <CustomLink to="/advantages">
+                                <span>30%</span>
+                                <p>Reducing construction time</p>
+                            </CustomLink>
+                            <CustomLink to="/advantages">
+                                <span>100%</span>
+                                <p>Better quality project</p>
+                            </CustomLink>
                         </div>
                     </div>
                     <div className="home__info-allow-threed">
@@ -188,9 +185,9 @@ const HomePage = () => {
                 <h3>The technology of our projects is developed by these countries</h3>
                 <div className="home__map-content">
                     <img src={worldMap} alt="map" />
-                    <Link to="/map">
+                    <CustomLink to="/map">
                         <img src={cursor} alt="cursor" />
-                    </Link>
+                    </CustomLink>
                 </div>
             </div>
         </div>

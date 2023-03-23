@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 
 import { useHttpAps } from '../hooks/http.aps.hook';
 
@@ -14,7 +14,7 @@ export const useAutodeskPlatformService = () => {
 
     let viewer;
 
-    const renderViewer = async (modelUrn, viewerContainer, toolbar = true) => {
+    const renderViewer = async (modelUrn, viewerContainer, toolbar = true, documentBrowser) => {
         const accessToken = await getToken();
 
         const options = {
@@ -26,15 +26,19 @@ export const useAutodeskPlatformService = () => {
         };
 
         Autodesk.Viewing.Initializer(options, async () => {
-            viewer = await new Autodesk.Viewing.GuiViewer3D(viewerContainer.current);
+            const config = {
+                extensions: documentBrowser ? ['Autodesk.DocumentBrowser'] : []
+            };
 
+            viewer = await new Autodesk.Viewing.GuiViewer3D(viewerContainer.current, config);
+            
             let startedCode = viewer.start();
              
             if (startedCode > 0) {
                 console.error('Failed to create a Viewer: WebGL not supported.');
                 return;
             }  
-
+            
             viewer.setTheme("light-theme");
         });
         
@@ -45,11 +49,11 @@ export const useAutodeskPlatformService = () => {
                 
                 await viewer.loadDocumentNode(doc, defaultModel);
                 
-                viewer.setLightPreset(7);
+                await viewer.setLightPreset(7);
 
                 if (!toolbar) {
                     viewer.toolbar.setVisible(false);
-                }
+                }  
             },
             (error) => {
                 console.error(error);
@@ -198,9 +202,6 @@ export const useAutodeskPlatformService = () => {
         data.forEach(async (item) => {
             await paintEverything(item.elements, item.status)
         })
-
-        
-        
     }, [])
 
     const resetToolbarVisibility = useCallback(() => {
@@ -224,13 +225,6 @@ export const useAutodeskPlatformService = () => {
         getProperties
     };
 }
-
-        // const modelInstances = viewer.getVisibleModels();
-        // const modelInstance = modelInstances[0];
-        // const colorCompleted = new THREE.Vector4( 255 / 255, 0, 0, 1 );
-        // viewer.setThemingColor([3593], colorCompleted );
-        // viewer.isolate(3593)
-        // viewer.impl.selector.setAggregateSelection(selection);
 
 // viewer.registerContextMenuCallback(  'MyChangingColorMenuItems', ( menu, status ) => {
         //     if( status.hasSelected ) {

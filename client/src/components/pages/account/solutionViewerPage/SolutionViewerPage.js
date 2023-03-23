@@ -22,7 +22,7 @@ const SolutionViewer = () => {
     }, [])
 
     useEffect(() => {
-        renderViewer(modelUrn, viewerContainer);
+        renderViewer(modelUrn, viewerContainer, true, true);
     }, [modelUrn])
     
     const backToDocumentationPage = () => {

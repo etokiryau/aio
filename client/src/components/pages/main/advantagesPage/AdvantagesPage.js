@@ -1,5 +1,6 @@
 import CustomLink from "../../../../utilis/CustomLink";
 import SingleAdvantage from "../../../singleAdvantage/SingleAdvantage";
+import ProgressCounter from "../../../progressCounter/ProgressCounter";
 
 import complexityVideo from './video/complexityVideo.mp4';
 import calculationsVideo from './video/calculationsVideo.mp4';
@@ -64,46 +65,27 @@ const AdvantagesPage = () => {
 
                 <div className="advantages__benefits-indicators">
                     <div className="advantages__benefits-indicators-single">
-                        <div className="advantages__benefits-indicators-single-ring">
-                            <svg>
-                                <circle cx="50%" cy="50%" r="60"/>
-                                <circle cx="50%" cy="50%" r="60"
-                                    strokeDashoffset={377 - (377 * 15) / 100}/>
-                            </svg>
-                            <p name="progress">15%</p>
-                        </div>
+                        <ProgressCounter targetNumber={15} duration={2000}/>
                         <p>Saving money</p>
                     </div>
 
                     <div className="advantages__benefits-indicators-single">
-                        <div className="advantages__benefits-indicators-single-ring">
-                            <svg>
-                                <circle cx="50%" cy="50%" r="60"/>
-                                <circle cx="50%" cy="50%" r="60"
-                                    strokeDashoffset={377 - (377 * 30) / 100}/>
-                            </svg>
-                            <p name="progress">30%</p>
-                        </div>
+                        <ProgressCounter targetNumber={30} duration={2000}/>
                         <p>Reduction of terms</p>
                     </div>
 
                     <div className="advantages__benefits-indicators-single">
-                        <div className="advantages__benefits-indicators-single-ring">
-                            <svg>
-                                <circle cx="50%" cy="50%" r="60"/>
-                                <circle cx="50%" cy="50%" r="60"
-                                    strokeDashoffset={377 - (377 * 100) / 100}/>
-                            </svg>
-                            <p name="progress">100%</p>
-                        </div>
+                        <ProgressCounter targetNumber={100} duration={2000}/>
                         <p>Improving the quality of the project</p>
                     </div>
                 </div>
 
-                <div className="advantages__benefits-conclusion">
-                    <p>All our projects have these advantages</p>
-                    <CustomLink to="/projects">Projects</CustomLink>
-                </div>
+                
+            </div>
+
+            <div className="advantages__benefits-conclusion">
+                <p>All our projects have these advantages</p>
+                <CustomLink to="/projects">Projects</CustomLink>
             </div>
             
         </div>

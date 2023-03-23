@@ -1,4 +1,5 @@
 import CustomLink from '../../utilis/CustomLink';
+import MediaStub from '../mediaStub/MediaStub';
 
 import instagramLogo from './img/instagramLogo.png';
 import facebookLogo from './img/facebookLogo.png';
@@ -18,9 +19,12 @@ const Footer = () => {
                     <CustomLink to='/policy'>Privacy Policy</CustomLink>
                 </div>
                 <div className='footer__content-media'>
-                    <a href=""><img src={instagramLogo} alt="instagram" /></a>
-                    <a href=""><img src={facebookLogo} alt="facebook" /></a>
-                    <a href=""><img src={linkedinLogo} alt="linkedin" /></a>
+                    <MediaStub src={instagramLogo} alt={"instagram"}/>
+                    <MediaStub src={facebookLogo} alt={"facebook"}/>
+                    <MediaStub src={linkedinLogo} alt={"linkedin"}/>
+                    {/* <a href=""><img src={instagramLogo} alt="instagram" /></a> */}
+                    {/* <a href=""><img src={facebookLogo} alt="facebook" /></a>
+                    <a href=""><img src={linkedinLogo} alt="linkedin" /></a> */}
                 </div>
             </div>
         </footer>
