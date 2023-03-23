@@ -164,7 +164,7 @@ const ServicesPage = () => {
 
     return (
         <div className="services">
-            <h1>Calculator</h1>
+            <h1>Our services</h1>
             <h2>Preliminary calculation of the project cost</h2>
 
             {!responseMessage ? 

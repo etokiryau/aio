@@ -1,5 +1,6 @@
 .project {
     padding: 90px 0px;
+    text-align: center;
 
     h3 {
         font-size: 14px;
@@ -321,6 +322,7 @@
                         margin-top: 20px;
                         padding-right: 10px;
                         height: calc(100% - 60px);
+                        min-height: calc(100% - 60px);
 
                         ul {
                             list-style:disc;
@@ -590,15 +592,19 @@
                     gap: 30px;
     
                     div[name='slider'] {
-                        max-height: calc(50% - 70px);;
-                        flex: none;
+                        max-height: 50%;;
+                        flex: 1;
                     }
     
                     div[name='setup'] {
-                        margin-top: 70px;
-                        flex: none;
+                        flex: 1;
                         height:auto;
                         max-height: 50%;
+
+                        div {
+                            height: calc(100% - 30px);
+                            min-height: calc(100% - 30px);
+                        }
 
                         ul {
                             li {

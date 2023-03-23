@@ -13,8 +13,6 @@
 
 @media (max-width: 660px) {
     .home-btn {
-        &:hover {
-            transform: none;
-        }
+        display: none;
     }
 }

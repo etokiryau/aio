@@ -28,11 +28,13 @@ const MainSidebar = () => {
 
     return (
         <aside id="main">
-            <div onClick={toggleSidebar} className={isSidebarOpen ? "aside__burger active" : "aside__burger"}>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>  
+            <div onClick={toggleSidebar}  className={`aside__burger-wrapper ${isSidebarOpen ? " active" : ""}`}>
+                <div className={`aside__burger ${isSidebarOpen ? " active" : ""}`}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
             
             <div onClick={toggleSidebar} style={{display: isSidebarOpen ? '' : 'none'}} className="aside__wrapper"/>
 

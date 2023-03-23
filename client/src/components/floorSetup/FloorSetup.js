@@ -34,7 +34,7 @@ const FloorSetup = ({data, order}) => {
     return (
         <>
             <div className='project__setup-list-single'>
-                <img src={data.preview} alt={`setup-`} onTouchStart={toggleZoomedSetup} onClick={toggleZoomedSetup}/>
+                <img src={data.preview} alt={`setup-`} onClick={toggleZoomedSetup}/>
                 <p>{data.name}</p>
             </div>
 
