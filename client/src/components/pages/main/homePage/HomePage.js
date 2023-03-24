@@ -67,9 +67,9 @@ const HomePage = () => {
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && entry.target.hasAttribute('data-autoplay')) {
-                entry.target.play();
+                    entry.target.play();
                 } else {
-                entry.target.pause();
+                    entry.target.pause();
                 }
             });
         }, options);
