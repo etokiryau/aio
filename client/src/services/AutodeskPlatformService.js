@@ -3,6 +3,7 @@ import { useCallback } from 'react';
 import { useHttpAps } from '../hooks/http.aps.hook';
 
 export const useAutodeskPlatformService = () => {
+
     const Autodesk = window.Autodesk;
     const THREE = window.THREE;
     
