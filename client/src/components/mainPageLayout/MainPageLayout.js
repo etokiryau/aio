@@ -15,15 +15,15 @@ const MainPageLayout = () => {
 
   const { pathname } = useResolvedPath();
 
-  // useEffect(() => {
-  //   if (pathname === '/' || pathname === '/advantages') {
-  //     setIsUploading(true);
+  useEffect(() => {
+    if (pathname === '/') {
+      setIsUploading(true);
 
-  //     setTimeout(() => {
-  //       setIsUploading(false);
-  //     }, 5000); 
-  //   }
-  // }, [pathname]);
+      setTimeout(() => {
+        setIsUploading(false);
+      }, 2000); 
+    }
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = isUploading? "hidden" : "visible";
