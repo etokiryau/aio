@@ -503,7 +503,17 @@
             }
 
             &-navigate {
+                padding-bottom: 70px;
+                justify-content: flex-end;
+                gap: 80px;
                 height: calc(100vh - 90px);
+                
+
+                a {
+                    padding: 12px 22px;
+                    font-size: 14px;
+                }
+
             }
         }
 
