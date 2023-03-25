@@ -1,3 +1,15 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+Allow: /projects
+Allow: /advantages
+Allow: /services
+Allow: /questions
+Allow: /career
+Allow: /contacts
+Allow: /login
+Allow: /blog
+Disallow: /instructions
+Disallow: /map
+Disallow: /policy
+Sitemap: http://www.aio-construction.online/sitemap.xml
