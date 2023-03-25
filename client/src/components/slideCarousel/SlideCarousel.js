@@ -124,10 +124,9 @@ const SlideCarousel = ({slides, options: { preview = false, arrows, dots, appear
                             />
                         )) :
                         slides.map((slide, i) => (
-                            <div className="slider-current-wrapper">
+                            <div key={i} className="slider-current-wrapper">
                                 <img src={slide} 
                                 alt={`slide${i + 1}`} 
-                                key={i}
                                 onClick={() => {toggleZoomedView(); handleClick(i)} }
                                 className={`${i === currentSlide ? 'active' : ''}`}
                                 />

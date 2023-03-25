@@ -41,7 +41,7 @@ const FloorSetup = ({data, order}) => {
             <div className={`project__setup-popup ${isZoomedSetup? 'active' : ''} ${isZoomedSlide? 'zoom-slide' : ''}`}>
                 <div className='project__setup-popup-content'>
                     <div name='slider' key={order}>
-                        <SlideCarousel slides={data.slides} options={sliderOptions} setIsZoomedSlide={setIsZoomedSlide} isZoomedSetup={isZoomedSetup}/>
+                        <SlideCarousel key={order} slides={data.slides} options={sliderOptions} setIsZoomedSlide={setIsZoomedSlide} isZoomedSetup={isZoomedSetup}/>
                     </div>
                     
                     <div name='setup'>

@@ -1,21 +1,21 @@
 import CustomLink from "../../utilis/CustomLink";
 import SlideCarousel from "../slideCarousel/SlideCarousel";
-import { data } from "./data";
+import { dataProjectsPage } from "./dataProjectsPage";
 
 import "./projects.scss";
 
 const Projects = () => {
 
+    const sliderOptions = {
+        preview: true,
+        arrows: true,
+        appearence: 'single'
+    };
+
     const renderProjects = (data) => {
         const content = data.map((item) => {
             const id = item.name.toLowerCase().replace(' ', '_');
 
-            const sliderOptions = {
-                preview: true,
-                arrows: true,
-                appearence: 'single'
-            };
-            
             return (
                 <div key={id} className="projects__single">
                     <div className="projects__single-slider">
@@ -36,7 +36,7 @@ const Projects = () => {
         return content;
     }
 
-    const content = renderProjects(data);
+    const content = renderProjects(dataProjectsPage);
     
     return (
         <div className="projects">
