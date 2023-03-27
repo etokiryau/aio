@@ -1,11 +1,51 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import  './map.scss';
 
 const Map = () => {
-    const AmCharts = window.AmCharts;
+  const [loaded, setLoaded] = useState(false);
 
+  const scriptUrls = [
+    'https://www.amcharts.com/lib/3/ammap.js',
+    'https://www.amcharts.com/lib/3/maps/js/worldLow.js'
+  ];
+  
     useEffect(() => {
+      const scriptPromises = scriptUrls.map(url => {
+        return new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = url;
+          script.async = true;
+          script.onload = resolve;
+          script.onerror = reject;
+          document.body.appendChild(script);
+        });
+      });
+
+    Promise.all(scriptPromises)
+      .then(() => {
+        setLoaded(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    return () => {
+      scriptUrls.forEach(url => {
+        const script = document.querySelector(`script[src="${url}"]`);
+        if (script) {
+          document.body.removeChild(script);
+        }
+      });
+    };
+  }, []);
+
+    
+    useEffect(() => {
+      if (loaded) {
+
+        const AmCharts = window.AmCharts;
+
         AmCharts.makeChart("map",{
             "type": "map",
             "pathToImages": "http://www.amcharts.com/lib/3/images/",
@@ -330,7 +370,8 @@ const Map = () => {
                 "buttonCornerRadius": 2
               }
         });
-    }, [])
+      }
+    }, [loaded])
     
     return (
         <>

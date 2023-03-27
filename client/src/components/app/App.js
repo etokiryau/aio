@@ -1,10 +1,9 @@
-import { lazy, Suspense, useEffect } from "react";
-import { Route, Routes, useResolvedPath } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
 
 import Spinner from "../spinner/Spinner";
 import { AuthProvider } from "../auth/AuthProvider";
 import RequireAuth from "../auth/RequireAuth";
-import { useChangeTitle } from "../../hooks/useChangeTitle";
 
 // import { ProjectPage, DocumentationPage, BuildingPage, SmartHousePage, SupportPage } from "../pages/account";
 // import { HomePage, AdvantagesPage, ServicesPage, BlogPage, CareerPage, ContactsPage, FaqPage, PolicyPage, ProjectsPage, SingleProjectPage} from "../pages/main";
@@ -36,13 +35,6 @@ const SupportPage = lazy(() => import("../pages/account/SupportPage"));
 
 function App() {
 
-  const {pathname} = useResolvedPath();
-  const {changeTitle} = useChangeTitle();
-
-  useEffect(() => {
-    changeTitle(pathname)
-  }, [pathname]);
-  
   return (
     <AuthProvider>
       <Suspense fallback={<Spinner/>}>

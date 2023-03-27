@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect, useCallback, useMemo, lazy } from 'react';
+import { Helmet } from "react-helmet";
+
 
 import { useAutodeskPlatformService } from '../../../../services/AutodeskPlatformService';
 import Monitoring from '../../../monitoring/Monitoring';
@@ -83,33 +85,41 @@ const Building = () => {
   }, []);
 
   return (
-    <Context.Provider value={{isTaskModalOpen, visibleElements, modelUrn}}>
-      <div className='building__wrapper'>
-        <h1 onClick={setStatus}>Monitoring of construction</h1>
+    <>
+      <Helmet>
+        <title>Building</title>
+        <meta property="og:title" content="Building" />
+        <meta property="og:url" content="http://www.aio-construction.online/building" />
+      </Helmet>
+    
+      <Context.Provider value={{isTaskModalOpen, visibleElements, modelUrn}}>
+        <div className='building__wrapper'>
+          <h1 onClick={setStatus}>Monitoring of construction</h1>
 
-        <div className='building'>
-        
-          <div className='building__content'>
-            <Monitoring toggleTaskModal={(e) => {toggleTaskModal(); updateVisibleElements(e)}} />
-          </div>
+          <div className='building'>
+          
+            <div className='building__content'>
+              <Monitoring toggleTaskModal={(e) => {toggleTaskModal(); updateVisibleElements(e)}} />
+            </div>
 
-          <div className='building__content viewer'>
-            <div className='viewer-container' ref={viewerContainer} />
-          </div>
+            <div className='building__content viewer'>
+              <div className='viewer-container' ref={viewerContainer} />
+            </div>
 
-          <div ref={taskModalRef}
-                style={{display: isTaskModalOpen ? 'block' : 'none', 
-                        left: position.x,
-                        top: position.y, 
-                        }}
-                className="taskcard-wrapper"
-                onMouseDown={handleMouseDown}>
-            <TaskCard toggleTaskModal={(e) => {toggleTaskModal(); updateVisibleElements(e)}}/>
-          </div>
+            <div ref={taskModalRef}
+                  style={{display: isTaskModalOpen ? 'block' : 'none', 
+                          left: position.x,
+                          top: position.y, 
+                          }}
+                  className="taskcard-wrapper"
+                  onMouseDown={handleMouseDown}>
+              <TaskCard toggleTaskModal={(e) => {toggleTaskModal(); updateVisibleElements(e)}}/>
+            </div>
 
-        </div> 
-      </div>
-    </Context.Provider>
+          </div> 
+        </div>
+      </Context.Provider>
+    </>
   )
 }
 

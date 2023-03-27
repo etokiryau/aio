@@ -7,9 +7,13 @@ Allow: /services
 Allow: /questions
 Allow: /career
 Allow: /contacts
-Allow: /login
 Allow: /blog
 Disallow: /instructions
 Disallow: /map
 Disallow: /policy
+Disallow: /project
+Disallow: /login
+Disallow: /documentation
+Disallow: /building
+Disallow: /smarthouse
 Sitemap: http://www.aio-construction.online/sitemap.xml

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef} from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import { useAutodeskPlatformService } from "../../../../services/AutodeskPlatformService";
 import arrow from './img/arrow.svg';
@@ -31,13 +32,21 @@ const SolutionViewer = () => {
     }
 
     return (
-        <div className="solution">
-            <div onClick={backToDocumentationPage} className="solution__back">
-                <img src={arrow} alt="arrow" />
-                <p>Back</p>
+        <>
+            <Helmet>
+                <title>Solution</title>
+                <meta property="og:title" content="Solution" />
+                <meta property="og:url" content="http://www.aio-construction.online/solution" />
+            </Helmet>
+        
+            <div className="solution">
+                <div onClick={backToDocumentationPage} className="solution__back">
+                    <img src={arrow} alt="arrow" />
+                    <p>Back</p>
+                </div>
+                <div className="solution__viewer" ref={viewerContainer} />
             </div>
-            <div className="solution__viewer" ref={viewerContainer} />
-        </div>
+        </>
     )
 }
 

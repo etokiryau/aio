@@ -15,7 +15,8 @@ export const useAutodeskPlatformService = () => {
 
     let viewer;
 
-    const renderViewer = async (modelUrn, viewerContainer, toolbar = true, documentBrowser) => {
+    const renderViewer = useCallback(async (modelUrn, viewerContainer, toolbar = true, documentBrowser) => {
+
         const accessToken = await getToken();
 
         const options = {
@@ -26,46 +27,54 @@ export const useAutodeskPlatformService = () => {
             accessToken: accessToken,
         };
 
-        Autodesk.Viewing.Initializer(options, async () => {
-            const config = {
-                extensions: documentBrowser ? ['Autodesk.DocumentBrowser'] : []
-            };
-
-            viewer = await new Autodesk.Viewing.GuiViewer3D(viewerContainer.current, config);
-            
-            let startedCode = viewer.start();
-             
-            if (startedCode > 0) {
-                console.error('Failed to create a Viewer: WebGL not supported.');
-                return;
-            }  
-            
-            viewer.setTheme("light-theme");
-        });
-        
-        Autodesk.Viewing.Document.load(
-            `urn:${modelUrn}`,
-            async (doc) => {
-                const defaultModel = doc.getRoot().getDefaultGeometry();
+        async function initViewer() {
+            await Autodesk.Viewing.Initializer(options, async () => {
+                const config = {
+                    extensions: documentBrowser ? ['Autodesk.DocumentBrowser'] : []
+                };
+    
+                viewer = await new Autodesk.Viewing.GuiViewer3D(viewerContainer.current, config);
                 
-                await viewer.loadDocumentNode(doc, defaultModel);
-                
-                await viewer.setLightPreset(7);
-
-                if (!toolbar) {
-                    viewer.toolbar.setVisible(false);
+                let startedCode = viewer.start();
+                 
+                if (startedCode > 0) {
+                    console.error('Failed to create a Viewer: WebGL not supported.');
+                    return;
                 }  
-            },
-            (error) => {
-                console.error(error);
-            },
-            { accessToken }
-        );  
+                
+                viewer.setTheme("light-theme");
+            });
+        }
 
+        async function loadDocument() {
+            await Autodesk.Viewing.Document.load(
+                `urn:${modelUrn}`,
+                async (doc) => {
+                    const defaultModel = doc.getRoot().getDefaultGeometry();
+                    
+                    await viewer.loadDocumentNode(doc, defaultModel);
+                    
+                    await viewer.setLightPreset(7);
+    
+                    if (!toolbar) {
+                        viewer.toolbar.setVisible(false);
+                    }  
+                },
+                (error) => {
+                    console.error(error);
+                },
+                { accessToken }
+            );  
+        }
+
+        await initViewer();
+        await loadDocument();
+        
         return <div ref={viewerContainer} />
-    }
+    }, [])
     
     const isolateElements = useCallback(async (elements, status) => {
+                
         let color;
 
         const getForgeIds = async () => {
@@ -113,6 +122,7 @@ export const useAutodeskPlatformService = () => {
     }, []);
 
     const paintEverything = useCallback(async (elements, status) => {
+                
         let color;
 
         const getForgeIds = async () => {
@@ -154,13 +164,14 @@ export const useAutodeskPlatformService = () => {
         })
     }, [])
 
-    const resetIsolation = useCallback(() => {
+    const resetIsolation = useCallback(() => {       
         viewer.isolate();
         viewer.clearThemingColors();
         viewer.fitToView();
     }, []);
 
     const isolateOnly = useCallback(async (elements) => {
+        
         const getForgeIds = async () => {
             const forgeIdsArray = [];
 
@@ -185,7 +196,7 @@ export const useAutodeskPlatformService = () => {
     }, []);
 
     const setStatus = useCallback(async () => {
-        
+
         const data = [
             {elements: ['409464'], status: 'completed'},
             {elements: ['210852', '210764', '210949'], status: 'rejected'},
