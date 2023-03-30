@@ -12,12 +12,17 @@ import './taskOverview.scss';
 const TaskOverview = () => {
     const viewerContainer = useRef(null);
     const {visibleElements, modelUrn, isTaskModalOpen} = useContext(Context);
-    const {renderViewer, isolateElements} = useAutodeskPlatformService();
+    const {renderViewer, isolateElements, isModelLoaded} = useAutodeskPlatformService();
     
     useEffect(() => {
         renderViewer(modelUrn, viewerContainer, false);
-        setTimeout(() => {isolateElements(visibleElements.elements, visibleElements.status)}, 1500)
-    }, [isTaskModalOpen, visibleElements]);
+    }, [isTaskModalOpen]);
+
+    useEffect(() => {
+        if (isModelLoaded) {
+            setTimeout(() => {isolateElements(visibleElements.elements, visibleElements.status, false)}, 1500)
+        }
+    }, [isModelLoaded])
 
     return (
         <div className="overview">

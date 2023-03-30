@@ -1,14 +1,16 @@
-import { useCallback } from 'react';
+import { useState, useCallback } from 'react';
+// import Autodesk from 'autodesk-forge-viewer';
 
 import { useHttpAps } from '../hooks/http.aps.hook';
 
 export const useAutodeskPlatformService = () => {
+    const [isModelLoaded, setIsModelLoaded] = useState(false);
+
+    const { getToken } = useHttpAps();
 
     const Autodesk = window.Autodesk;
     const THREE = window.THREE;
     
-    const { getToken } = useHttpAps();
-
     const colorCompleted = new THREE.Vector4( 0, 255, 0, 0.5 );
     const colorInProgress = new THREE.Vector4( 0, 0, 255, 0.5 );
     const colorRejected = new THREE.Vector4( 255, 0, 0, 0.3 );
@@ -16,6 +18,7 @@ export const useAutodeskPlatformService = () => {
     let viewer;
 
     const renderViewer = useCallback(async (modelUrn, viewerContainer, toolbar = true, documentBrowser) => {
+        setIsModelLoaded(false);
 
         const accessToken = await getToken();
 
@@ -34,7 +37,13 @@ export const useAutodeskPlatformService = () => {
                 };
     
                 viewer = await new Autodesk.Viewing.GuiViewer3D(viewerContainer.current, config);
-                
+
+                const setPreset = () => {
+                    viewer.setLightPreset(7);
+                };
+
+                viewer.addEventListener(Autodesk.Viewing.VIEWER_INITIALIZED, setPreset);
+
                 let startedCode = viewer.start();
                  
                 if (startedCode > 0) {
@@ -43,6 +52,8 @@ export const useAutodeskPlatformService = () => {
                 }  
                 
                 viewer.setTheme("light-theme");
+
+                return viewer.removeEventListener(Autodesk.Viewing.VIEWER_INITIALIZED, setPreset);
             });
         }
 
@@ -53,12 +64,14 @@ export const useAutodeskPlatformService = () => {
                     const defaultModel = doc.getRoot().getDefaultGeometry();
                     
                     await viewer.loadDocumentNode(doc, defaultModel);
-                    
-                    await viewer.setLightPreset(7);
     
                     if (!toolbar) {
                         viewer.toolbar.setVisible(false);
-                    }  
+                    }
+
+                    viewer.waitForLoadDone()
+                        .then(() => setIsModelLoaded(true))
+                        .catch((err) => console.log(err))
                 },
                 (error) => {
                     console.error(error);
@@ -67,13 +80,11 @@ export const useAutodeskPlatformService = () => {
             );  
         }
 
-        await initViewer();
-        await loadDocument();
-        
-        return <div ref={viewerContainer} />
+        initViewer();
+        loadDocument();
     }, [])
     
-    const isolateElements = useCallback(async (elements, status) => {
+    const isolateElements = useCallback(async (elements, status, isGhosting = true) => {
                 
         let color;
 
@@ -97,7 +108,7 @@ export const useAutodeskPlatformService = () => {
 
         const forgeIdsArray = await getForgeIds();    
 
-        viewer.setGhosting(true);
+        viewer.setGhosting(isGhosting);
         await viewer.isolate(forgeIdsArray);
         
         switch (status) {
@@ -192,6 +203,7 @@ export const useAutodeskPlatformService = () => {
 
         const forgeIdsArray = await getForgeIds();
         
+        viewer.setGhosting(true);
         viewer.isolate(forgeIdsArray);
     }, []);
 
@@ -228,6 +240,7 @@ export const useAutodeskPlatformService = () => {
     }, [])
 
     return {
+        isModelLoaded,
         viewer, 
         renderViewer,
         isolateElements, 

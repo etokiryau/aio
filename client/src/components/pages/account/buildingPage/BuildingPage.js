@@ -20,7 +20,7 @@ const Building = () => {
   let windowWidth = windowRef.current.innerWidth;
   const viewerContainer = useRef(null);
 
-  const {renderViewer, setStatus, isolateElements, resetIsolation, getProperties} = useAutodeskPlatformService();
+  const {renderViewer, setStatus, isolateElements, resetIsolation, isModelLoaded} = useAutodeskPlatformService();
 
   // const modelUrn = 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dHN3aWdsenZ5dWJtbTZwaG04d2Ria2IzZHhqbmZrcnYtcHJvamVjdF9hL3Byb2plY3RfYV9mcmVlLm53ZA';
   // const modelUrn = 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dGVzdF9wbGF0Zm9ybS90ZXN0MDEuemlw';
@@ -35,7 +35,6 @@ const Building = () => {
     if (!isTaskModalOpen) {
       const data = JSON.parse(e.target.getAttribute('data-elements'));
       setVisibleElements({...visibleElements, ...data});
-      // resetIsolation();
       isolateElements(data.elements, data.status);
     } else {
       resetIsolation();
@@ -76,13 +75,15 @@ const Building = () => {
       });
   };
 
-  const loadModel = async () => {
-    await renderViewer(modelUrn, viewerContainer);
-    setTimeout(setStatus(), 10000);
-  }
   useEffect(() => {
-    loadModel();
+    renderViewer(modelUrn, viewerContainer);
   }, []);
+
+  useEffect(() => {
+    if (isModelLoaded) {
+      setTimeout(() => setStatus(), 500)
+    }
+  }, [isModelLoaded])
 
   return (
     <>
@@ -94,7 +95,7 @@ const Building = () => {
     
       <Context.Provider value={{isTaskModalOpen, visibleElements, modelUrn}}>
         <div className='building__wrapper'>
-          <h1 onClick={setStatus}>Monitoring of construction</h1>
+          <h1>Monitoring of construction</h1>
 
           <div className='building'>
           
