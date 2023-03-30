@@ -64,7 +64,7 @@ const SingleProjectPage = () => {
 
     useEffect(() => {
         if (isZoomedModel && !isModelLoaded) {
-            renderViewer(modelUrn, viewerContainer);
+            renderViewer(modelUrn, viewerContainer, true, false, false);
             setIsModelLoaded(true);
         }
     }, [isZoomedModel]);

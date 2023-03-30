@@ -17,7 +17,7 @@ export const useAutodeskPlatformService = () => {
 
     let viewer;
 
-    const renderViewer = useCallback(async (modelUrn, viewerContainer, toolbar = true, documentBrowser) => {
+    const renderViewer = useCallback(async (modelUrn, viewerContainer, toolbar = true, documentBrowser, isGhosting = true) => {
         setIsModelLoaded(false);
 
         const accessToken = await getToken();
@@ -68,6 +68,8 @@ export const useAutodeskPlatformService = () => {
                     if (!toolbar) {
                         viewer.toolbar.setVisible(false);
                     }
+
+                    viewer.setGhosting(isGhosting);
 
                     viewer.waitForLoadDone()
                         .then(() => setIsModelLoaded(true))
