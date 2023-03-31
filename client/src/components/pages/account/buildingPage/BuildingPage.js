@@ -31,14 +31,13 @@ const Building = () => {
     setIsTaskModalOpen(!isTaskModalOpen);
   }
 
-  const updateVisibleElements = useCallback((e) => {
+  const updateVisibleElements = useCallback(async(e) => {
     if (!isTaskModalOpen) {
       const data = JSON.parse(e.target.getAttribute('data-elements'));
       setVisibleElements({...visibleElements, ...data});
       isolateElements(data.elements, data.status);
     } else {
-      resetIsolation();
-      setStatus()
+      setStatus();
     }
   }, [isTaskModalOpen])
 

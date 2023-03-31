@@ -64,10 +64,8 @@ export const useAutodeskPlatformService = () => {
                     const defaultModel = doc.getRoot().getDefaultGeometry();
                     
                     await viewer.loadDocumentNode(doc, defaultModel);
-    
-                    if (!toolbar) {
-                        viewer.toolbar.setVisible(false);
-                    }
+
+                    viewer.toolbar.setVisible(toolbar);
 
                     viewer.setGhosting(isGhosting);
 
@@ -86,8 +84,7 @@ export const useAutodeskPlatformService = () => {
         loadDocument();
     }, [])
     
-    const isolateElements = useCallback(async (elements, status, isGhosting = true) => {
-                
+    const isolateElements = useCallback(async (elements, status, isGhosting = true) => {   
         let color;
 
         const getForgeIds = async () => {
@@ -134,8 +131,7 @@ export const useAutodeskPlatformService = () => {
         viewer.fitToView();
     }, []);
 
-    const paintEverything = useCallback(async (elements, status) => {
-                
+    const paintEverything = useCallback(async (elements, status) => {  
         let color;
 
         const getForgeIds = async () => {
@@ -178,13 +174,12 @@ export const useAutodeskPlatformService = () => {
     }, [])
 
     const resetIsolation = useCallback(() => {       
-        viewer.isolate();
-        viewer.clearThemingColors();
+        // viewer.isolate();
+        // viewer.clearThemingColors();
         viewer.fitToView();
     }, []);
 
     const isolateOnly = useCallback(async (elements) => {
-        
         const getForgeIds = async () => {
             const forgeIdsArray = [];
 
@@ -210,24 +205,25 @@ export const useAutodeskPlatformService = () => {
     }, []);
 
     const setStatus = useCallback(async () => {
-
         const data = [
             {elements: ['409464'], status: 'completed'},
             {elements: ['210852', '210764', '210949'], status: 'rejected'},
             {elements: ['220087', '210651', '212027'], status: 'progress'}
         ];
 
-        let elements = [];
+        const elements = [];
 
         data.forEach(item => {
-            elements = [...elements, ...item.elements];
-        })
+            elements.push(...item.elements);
+        });
+
+        data.forEach((item) => {
+            paintEverything(item.elements, item.status)
+        });
 
         await isolateOnly(elements);
 
-        data.forEach(async (item) => {
-            await paintEverything(item.elements, item.status)
-        })
+        viewer.fitToView();
     }, [])
 
     const resetToolbarVisibility = useCallback(() => {

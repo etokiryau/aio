@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 function RequireAuth({ children }) {
 
-  let {isAuthenticated} = useContext(AuthContext);
+  let { isAuthenticated } = useContext(AuthContext);
   let location = useLocation();
 
   if (!isAuthenticated) {
