@@ -29,7 +29,7 @@ const SingleProjectPage = () => {
         'threeD': false
     });
 
-    const { renderViewer } = useAutodeskPlatformService();  
+    const { renderViewer, stub } = useAutodeskPlatformService();  
 
     const toggleListOpened = (event) => {
         const key = event.target.getAttribute('name');
@@ -144,6 +144,7 @@ const SingleProjectPage = () => {
                     <div className='project__model-popup' style={{display: isZoomedModel? 'block' : 'none'}}>
                         <div className='project__model-popup-viewer'>
                             <div ref={viewerContainer}></div>
+                            {stub}
                         </div>
                         <div className='project__model-popup-close' onClick={toggleZoomedModel}>
                             <img src={close} alt="close" />

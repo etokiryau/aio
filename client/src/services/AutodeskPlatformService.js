@@ -1,10 +1,10 @@
-import { useState, useCallback } from 'react';
-// import Autodesk from 'autodesk-forge-viewer';
+import { useState, useCallback, useMemo } from 'react';
 
 import { useHttpAps } from '../hooks/http.aps.hook';
 
 export const useAutodeskPlatformService = () => {
     const [isModelLoaded, setIsModelLoaded] = useState(false);
+    const [isStubbed, setIsStubbed] = useState(false);
 
     const { getToken } = useHttpAps();
 
@@ -16,6 +16,14 @@ export const useAutodeskPlatformService = () => {
     const colorRejected = new THREE.Vector4( 255, 0, 0, 0.3 );
 
     let viewer;
+
+    const stubStyle = {
+        position: 'absolute', 
+        zIndex: '100', 
+        top: '50%', 
+        left: '50%', 
+        transform: 'translate(-50%, -50%)', 
+    };
 
     const renderViewer = useCallback(async (modelUrn, viewerContainer, toolbar = true, documentBrowser, isGhosting = true) => {
         setIsModelLoaded(false);
@@ -31,6 +39,8 @@ export const useAutodeskPlatformService = () => {
         };
 
         async function initViewer() {
+            setIsStubbed(true);
+            
             await Autodesk.Viewing.Initializer(options, async () => {
                 const config = {
                     extensions: documentBrowser ? ['Autodesk.DocumentBrowser'] : []
@@ -69,6 +79,8 @@ export const useAutodeskPlatformService = () => {
 
                     viewer.setGhosting(isGhosting);
 
+                    setIsStubbed(false);
+
                     viewer.waitForLoadDone()
                         .then(() => setIsModelLoaded(true))
                         .catch((err) => console.log(err))
@@ -82,7 +94,11 @@ export const useAutodeskPlatformService = () => {
 
         initViewer();
         loadDocument();
-    }, [])
+    }, []);
+
+    const stub = useMemo(() => {
+        return isStubbed ? <div style={stubStyle}>Loading...</div> : null;
+    }, [isStubbed]);
     
     const isolateElements = useCallback(async (elements, status, isGhosting = true) => {   
         let color;
@@ -241,6 +257,7 @@ export const useAutodeskPlatformService = () => {
         isModelLoaded,
         viewer, 
         renderViewer,
+        stub,
         isolateElements, 
         resetIsolation, 
         resetToolbarVisibility,

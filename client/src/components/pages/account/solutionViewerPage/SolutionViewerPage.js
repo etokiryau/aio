@@ -16,7 +16,7 @@ const SolutionViewer = () => {
     let navigate = useNavigate();
     let location = useLocation();
 
-    const { renderViewer } = useAutodeskPlatformService();
+    const { renderViewer, stub } = useAutodeskPlatformService();
 
     useEffect(() => {
         setModelUrn(location.state);
@@ -45,6 +45,7 @@ const SolutionViewer = () => {
                     <p>Back</p>
                 </div>
                 <div className="solution__viewer" ref={viewerContainer} />
+                {stub}
             </div>
         </>
     )

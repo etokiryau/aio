@@ -20,7 +20,7 @@ const Building = () => {
   let windowWidth = windowRef.current.innerWidth;
   const viewerContainer = useRef(null);
 
-  const {renderViewer, setStatus, isolateElements, resetIsolation, isModelLoaded} = useAutodeskPlatformService();
+  const {renderViewer, setStatus, isolateElements, stub, isModelLoaded} = useAutodeskPlatformService();
 
   // const modelUrn = 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dHN3aWdsenZ5dWJtbTZwaG04d2Ria2IzZHhqbmZrcnYtcHJvamVjdF9hL3Byb2plY3RfYV9mcmVlLm53ZA';
   // const modelUrn = 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dGVzdF9wbGF0Zm9ybS90ZXN0MDEuemlw';
@@ -104,6 +104,7 @@ const Building = () => {
 
             <div className='building__content viewer'>
               <div className='viewer-container' ref={viewerContainer} />
+              {stub}
             </div>
 
             <div ref={taskModalRef}
