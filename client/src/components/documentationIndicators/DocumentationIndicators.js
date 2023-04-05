@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-
 import './documentationIndicators.scss'
 
 const DocumentationIndicators = () => {
@@ -11,7 +10,7 @@ const DocumentationIndicators = () => {
 
     const toggleListOpened = () => {
         setListOpened(!listOpened);
-    }
+    };
 
     const renderList = () => {
         const delay = 0.02;
@@ -24,7 +23,7 @@ const DocumentationIndicators = () => {
                 {list}
             </ul>
         )
-    }
+    };
 
     return (
         <div className="indicators">

@@ -1,3 +1,7 @@
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { updateProjects } from './projectsSlice';
 import CustomLink from "../../utilis/CustomLink";
 import SlideCarousel from "../slideCarousel/SlideCarousel";
 import { dataProjectsPage } from "./dataProjectsPage";
@@ -5,6 +9,12 @@ import { dataProjectsPage } from "./dataProjectsPage";
 import "./projects.scss";
 
 const Projects = () => {
+    const { projectsList } = useSelector(state => state.projects);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(updateProjects(dataProjectsPage));
+    }, [])
 
     const sliderOptions = {
         preview: true,
@@ -36,7 +46,7 @@ const Projects = () => {
         return content;
     }
 
-    const content = renderProjects(dataProjectsPage);
+    const content = renderProjects(projectsList);
     
     return (
         <div className="projects">

@@ -6,7 +6,7 @@ import { useAutodeskPlatformService } from "../../../../services/AutodeskPlatfor
 import SlideCarousel from "../../../slideCarousel/SlideCarousel";
 import FloorSetup from '../../../floorSetup/FloorSetup';
 import CustomLink from '../../../../utilis/CustomLink';
-import { data } from "../../../projects/data";
+import Spinner from '../../../spinner/Spinner';
 
 import book from './img/book.png';
 import threeDIcon from './img/threeDIcon.png';
@@ -19,8 +19,9 @@ const SingleProjectPage = () => {
 
     const viewerContainer = useRef(null);
 
+    const [project, setProject] = useState({});
+    const [isProjectLoaded, setIsProjectLoaded] = useState(false);
     const [isZoomedModel, setIsZoomedModel] = useState(false);
-
     const [isModelLoaded, setIsModelLoaded] = useState(false);
     const [isListOpened, setIsListOpened] = useState({
         'architecture': false,
@@ -44,21 +45,16 @@ const SingleProjectPage = () => {
         document.body.style.overflow = isZoomedModel  ? "hidden" : "visible";
     }, [isZoomedModel]);
 
-    const getProjectIndex = () => {
-        let index;
-        data.forEach((item, i) => {
-            const projName = item.name.toLowerCase().replace(' ', '_');
-            if (projName === id) {
-                index = i;
-            }
-        })
-
-        return index;
+    const getProjectData = async () => {
+        const letter = id.split('_')[1].toUpperCase();
+        const { projectData } = await import(`../../../projects/projectsData/project${letter}Data`);
+        setProject(prev => ({...prev, ...projectData}));
+        setIsProjectLoaded(true);
     };
 
-    const projectIndex = getProjectIndex();
-   
-    const project = data[projectIndex];
+    useEffect(() => {
+        getProjectData();
+    }, [])
 
     const modelUrn = project.modelUrn;
 
@@ -86,6 +82,7 @@ const SingleProjectPage = () => {
                 <meta property="og:url" content={`http://www.aio-construction.online/${id}`}/>
             </Helmet>
         
+            {isProjectLoaded ? 
             <div className='project'>
                 <h3>{project.code}</h3>
                 <h1>{project.name}</h1>
@@ -330,6 +327,7 @@ const SingleProjectPage = () => {
                 </div>
                 
             </div>
+            : <Spinner /> }
         </>
     )
 }

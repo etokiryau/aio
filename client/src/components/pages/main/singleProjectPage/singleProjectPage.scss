@@ -241,6 +241,7 @@
 
         &-list {
             margin-top: 50px;
+            padding: 0 30px;
             display: flex;
             justify-content: space-evenly;
             flex-wrap: wrap;
@@ -663,6 +664,10 @@
 
         &__setup {
             max-width: 90%;
+
+            &-list {
+                padding: 0 10px;
+            }
 
             &-popup {
                 padding: 5px 10px;

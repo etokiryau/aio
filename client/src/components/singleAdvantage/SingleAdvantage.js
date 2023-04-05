@@ -9,7 +9,7 @@ const SingleAdvantage = ({data}) => {
     useEffect(() => {
         const options = {
             root: document.querySelector('main'),
-            rootMargin: '0px',
+            rootMargin: '10px',
             threshold: 0.6
         };
 

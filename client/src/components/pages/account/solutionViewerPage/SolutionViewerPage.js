@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef} from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { useSelector } from 'react-redux';
 
 import { useAutodeskPlatformService } from "../../../../services/AutodeskPlatformService";
 import arrow from './img/arrow.svg';
@@ -8,7 +9,6 @@ import arrow from './img/arrow.svg';
 import './solutionViewerPage.scss';
 
 const SolutionViewer = () => {
-
     const [modelUrn, setModelUrn] = useState('');
 
     const viewerContainer = useRef(null);
@@ -18,12 +18,16 @@ const SolutionViewer = () => {
 
     const { renderViewer, stub } = useAutodeskPlatformService();
 
+    const { list, currentDrawingUrn } = useSelector(state => state.drawings);
+  
     useEffect(() => {
-        setModelUrn(location.state);
-    }, [])
+        setModelUrn(currentDrawingUrn);
+    }, [currentDrawingUrn])
 
     useEffect(() => {
-        renderViewer(modelUrn, viewerContainer, true, true);
+        if (modelUrn) {
+            renderViewer(modelUrn, viewerContainer, true, true);
+        }
     }, [modelUrn])
     
     const backToDocumentationPage = () => {

@@ -61,7 +61,7 @@ const HomePage = () => {
     useEffect(() => {
         const options = {
             root: document.querySelector('main'),
-            rootMargin: '0px',
+            rootMargin: '10px',
             threshold: 0.1
         };
 

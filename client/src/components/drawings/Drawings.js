@@ -1,5 +1,8 @@
-import { useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { updateDrawings, setCurrentDrawingUrn } from './drawingsSlice';
 
 import book from './img/book.png';
 import pdf from './img/pdf.png';
@@ -13,13 +16,10 @@ import modelWater from './img/modelWater.png';
 import './drawings.scss';
 
 const Drawings = () => {
+    const solutionRefs = useRef([]);
 
-    const archRef = useRef(null);
-    const constRef = useRef(null);
-    const waterRef = useRef(null);
-    const heatingRef = useRef(null);
-    const powerRef = useRef(null);
-
+    const { list } = useSelector(state => state.drawings);
+    const dispatch = useDispatch();
 
     const solutionData = [
         {
@@ -57,57 +57,23 @@ const Drawings = () => {
             backgroundImage: modelPower,
             urn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdF9hX2J5L3Byb2plY3RfYV9wcy56aXA'
         }
-    ]
+    ];
 
-    const handleFocus = (solution) => {
-        let offsetY;
-        switch (solution) {
-            case 'architecture':
-                offsetY = archRef.current.offsetTop;
-                break;
-            case 'construct':
-                offsetY = constRef.current.offsetTop;
-                break;
-            case 'water':
-                offsetY = waterRef.current.offsetTop;
-                break;
-            case 'heating':
-                offsetY = heatingRef.current.offsetTop;
-                break;
-            case 'power':
-                offsetY = powerRef.current.offsetTop;
-                break;
-            default:
-                break;
-        }
+    useEffect(() => {
+        dispatch(updateDrawings(solutionData));
+    }, [])
 
+    const handleFocus = (i) => {
         window.scrollTo({
-            top: offsetY - window.innerHeight / 2 + 120,
+            top: solutionRefs.current[i].offsetTop - window.innerHeight / 2 + 120,
             behavior: 'smooth'
         });
-    }
-
-    const getRef = (solution) => {
-        switch(solution) {
-            case 'architecture':
-                return archRef;
-            case 'construct':
-                return constRef;
-            case 'water':
-                return waterRef;
-            case 'heating':
-                return heatingRef;
-            case 'power':
-                return powerRef;
-            default:
-                break;
-        }
-    }
+    };
 
     const renderFocusButtons = () => {
-        const buttons = solutionData.map(item => {
-            return <li key={item.id} onClick={() => handleFocus(item.id)}>{item.name}</li>
-        })
+        const buttons = list.map((item, i) => {
+            return <li key={item.id} onClick={() => handleFocus(i)}>{item.name}</li>
+        });
 
         return (
             <ul>
@@ -117,10 +83,9 @@ const Drawings = () => {
     }
 
     const renderSolutionList = () => {
-        const solutions = solutionData.map((item, i) => {
-            const ref = getRef(item.id);
+        const solutions = list.map((item, i) => {
             return (
-                <div key={item.id} ref={ref} name={item.id} className="drawings__solutions-single">
+                <div key={item.id} ref={el => solutionRefs.current[i] = el} className="drawings__solutions-single">
                     <div className="drawings__solutions-single-left">
                         <p>{item.name}</p>
                         <a href={item.downloadUrl}>
@@ -129,7 +94,7 @@ const Drawings = () => {
                         </a>
                     </div>
                     <div style={{backgroundImage: `url(${item.backgroundImage})`}} className="drawings__solutions-single-right">
-                        <Link to={`/documentation/${item.id}`} state={item.urn} >
+                        <Link to={`/documentation/${item.id}`}  onClick={() => dispatch(setCurrentDrawingUrn(item.urn))}>
                             <div>          
                                 <img src={threeDIcon} alt="3d-icon" />
                             </div>
@@ -140,7 +105,7 @@ const Drawings = () => {
         });
 
         return solutions;
-    }
+    };
 
     const solutionList = useMemo(() => renderSolutionList(), [solutionData]);
     const focusButtons = useMemo(() => renderFocusButtons(), [solutionData]);
