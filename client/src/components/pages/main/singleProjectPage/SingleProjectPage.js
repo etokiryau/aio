@@ -160,7 +160,6 @@ const SingleProjectPage = () => {
                             </div>
                         : null
                         }
-                        
                     </div>
                     
 
@@ -169,7 +168,7 @@ const SingleProjectPage = () => {
                             <div ref={viewerContainer}></div>
                             {stub}
                         </div>
-                        <div className='project__model-popup-close' onClick={toggleZoomedTour}>
+                        <div className='project__model-popup-close' onClick={toggleZoomedModel}>
                             <img src={close} alt="close" />
                         </div>
                     </div>
