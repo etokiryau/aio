@@ -19,8 +19,14 @@ export const projectData = {
     dimensions: '16 x 12.8',
     price: 750,
     reducedPrice: 643,
-    preview: previewProject4,
-    modelUrn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dHN3aWdsenZ5dWJtbTZwaG04d2Ria2IzZHhqbmZrcnYtcHJvamVjdF9kLzAyXzAwMV8lRDAlQTAlRDAlQkUlRDAlQkMlRDAlQjElRDAlQjAlRDAlQjElRDAlQjAlMjAlRDAlQkQlRDAlQjAlRDAlQkUlRDAlQjElRDAlQkUlRDElODAlRDAlQkUlRDElODJfRU5HLnJ2dA',
+    project: {
+        preview: previewProject4,
+        modelUrn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dHN3aWdsenZ5dWJtbTZwaG04d2Ria2IzZHhqbmZrcnYtcHJvamVjdF9kLzAyXzAwMV8lRDAlQTAlRDAlQkUlRDAlQkMlRDAlQjElRDAlQjAlRDAlQjElRDAlQjAlMjAlRDAlQkQlRDAlQjAlRDAlQkUlRDAlQjElRDAlQkUlRDElODAlRDAlQkUlRDElODJfRU5HLnJ2dA'
+    },
+    tour: {
+        preview: project42,
+        url: ''
+    },
     descr: "This 2-storey house is a marvel of modern architecture, inspired by the idea of merging simple forms to create an ideal functional solution. The strict classic zoning, combined with a convenient modern design, makes this house the perfect choice for families. Inside, the space is divided in a way that promotes coziness and harmony, with a focus on creating an inviting atmosphere. The facade of the house is a beautiful combination of natural decorative materials, with a unique emphasis on the intersection of volumes. This not only adds visual interest, but also showcases the home's attention to detail and commitment to quality. The house is a harmonious blend of form and function, making it the perfect place for families to call home.",
     renders: [
         project43,

@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^13.5.0",
     "autodesk.forge.designautomation": "^3.0.5",
     "chart.js": "^4.2.1",
+    "crypto-js": "^4.1.1",
     "forge-apis": "^0.9.5",
     "formik": "^2.2.9",
     "node-fetch": "^2.6.7",
@@ -41,7 +42,7 @@
       "react-app/jest"
     ]
   },
-  "proxy": "https://aio-construction.online",
+  "proxy": "https://aio.house",
   "browserslist": {
     "production": [
       ">0.2%",

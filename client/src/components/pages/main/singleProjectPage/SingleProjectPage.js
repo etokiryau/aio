@@ -7,9 +7,11 @@ import SlideCarousel from "../../../slideCarousel/SlideCarousel";
 import FloorSetup from '../../../floorSetup/FloorSetup';
 import CustomLink from '../../../../utilis/CustomLink';
 import Spinner from '../../../spinner/Spinner';
+import ProgressCounter from '../../../progressCounter/ProgressCounter';
 
 import book from './img/book.png';
 import threeDIcon from './img/threeDIcon.png';
+import tourIcon from './img/tourIcon.png';
 import close from './img/close.png';
 
 import './singleProjectPage.scss';
@@ -19,10 +21,13 @@ const SingleProjectPage = () => {
 
     const viewerContainer = useRef(null);
 
+    const [instanceStatus, setInstanceStaus] = useState('');
     const [project, setProject] = useState({});
+    const [modelUrn, setModelUrn] = useState('');
     const [isProjectLoaded, setIsProjectLoaded] = useState(false);
     const [isZoomedModel, setIsZoomedModel] = useState(false);
     const [isModelLoaded, setIsModelLoaded] = useState(false);
+    const [isZoomedTour, setIsZoomedTour] = useState(false);
     const [isListOpened, setIsListOpened] = useState({
         'architecture': false,
         'structure': false,
@@ -31,6 +36,18 @@ const SingleProjectPage = () => {
     });
 
     const { renderViewer, stub } = useAutodeskPlatformService();  
+
+    const getProjectData = async () => {
+        const letter = id.split('_')[1].toUpperCase();
+        const { projectData } = await import(`../../../projects/projectsData/project${letter}Data`);
+        setProject(prev => ({...prev, ...projectData}));
+        setModelUrn(projectData.project.modelUrn);
+        setIsProjectLoaded(true);
+    };
+
+    useEffect(() => {
+        getProjectData();
+    }, []);
 
     const toggleListOpened = (event) => {
         const key = event.target.getAttribute('name');
@@ -41,22 +58,13 @@ const SingleProjectPage = () => {
         setIsZoomedModel(!isZoomedModel);
     };
 
-    useEffect(() => {
-        document.body.style.overflow = isZoomedModel  ? "hidden" : "visible";
-    }, [isZoomedModel]);
-
-    const getProjectData = async () => {
-        const letter = id.split('_')[1].toUpperCase();
-        const { projectData } = await import(`../../../projects/projectsData/project${letter}Data`);
-        setProject(prev => ({...prev, ...projectData}));
-        setIsProjectLoaded(true);
+    const toggleZoomedTour = () => {
+        setIsZoomedTour(!isZoomedTour);
     };
 
     useEffect(() => {
-        getProjectData();
-    }, [])
-
-    const modelUrn = project.modelUrn;
+        document.body.style.overflow = isZoomedModel || isZoomedTour  ? "hidden" : "visible";
+    }, [isZoomedModel, isZoomedTour]);
 
     useEffect(() => {
         if (isZoomedModel && !isModelLoaded) {
@@ -131,19 +139,52 @@ const SingleProjectPage = () => {
                             <p>Instructions for our platform</p>
                         </a>
                     </div>
-                    <div className='project__model-preview'>
-                        <img name='background' src={project.preview} alt="preview" />
-                        <div className='project__model-preview-open' onClick={toggleZoomedModel}>
-                            <img src={threeDIcon} alt="threeD" />
+                    <div className='project__model-links'>
+                        <div style={{height: `${project.tour.url ? 'auto' : '400px'}`}} className='project__model-preview'>
+                            <img name='background' src={project.project.preview} alt="project-preview" 
+                                style={{
+                                    objectFit: project.tour.url ? 'fill' : 'cover',
+                                    filter: project.tour.url ? 'none' : 'blur(2px)'
+                                }}
+                            />
+                            <div className='project__model-preview-open' onClick={toggleZoomedModel}>
+                                <img src={threeDIcon} alt="threeD" />
+                            </div>
                         </div>
+                        {project.tour.url ? 
+                            <div className='project__model-preview'>
+                                <img name='background' src={project.tour.preview} alt="tour-preview" />
+                                <div className='project__model-preview-open' onClick={toggleZoomedTour}>
+                                    <img src={tourIcon} alt="tourThreeD" />
+                                </div>
+                            </div>
+                        : null
+                        }
+                        
                     </div>
+                    
 
                     <div className='project__model-popup' style={{display: isZoomedModel? 'block' : 'none'}}>
                         <div className='project__model-popup-viewer'>
                             <div ref={viewerContainer}></div>
                             {stub}
                         </div>
-                        <div className='project__model-popup-close' onClick={toggleZoomedModel}>
+                        <div className='project__model-popup-close' onClick={toggleZoomedTour}>
+                            <img src={close} alt="close" />
+                        </div>
+                    </div>
+
+                    <div className='project__model-popup' style={{display: isZoomedTour? 'block' : 'none'}}>
+                        <div className='project__model-popup-viewer'>
+                            <div className={`project__model-popup-viewer-stub ${instanceStatus === 'running' ? `active` : ''}`}>
+                                <ProgressCounter targetNumber={100} duration={180000} loader={true} start={isZoomedTour} />
+                            </div>
+                            {isZoomedTour ?
+                                <iframe id="vagonFrame" allow="microphone  *; clipboard-read *; clipboard-write *; encrypted-media *;" src={project.tour.url}/>
+                                : null
+                            }
+                        </div>
+                        <div className='project__model-popup-close' onClick={toggleZoomedTour}>
                             <img src={close} alt="close" />
                         </div>
                     </div>

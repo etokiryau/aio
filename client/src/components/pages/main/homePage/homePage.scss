@@ -249,12 +249,36 @@
         margin-top: 95px;
 
         &-enscape {
+            position: relative;
             margin-top: 75px;
 
             video {
                 width: 70%;
                 max-width: 1100px; 
                 object-fit: contain;
+            }
+
+            a {
+                position: absolute;
+                padding: 20px 22px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 200px;
+                background-color:rgba($color: #EBEBEB, $alpha: 0.8);
+                border-radius: 30px;
+                transition: .5s ease;
+
+                &:hover {
+                    p {
+                        color: #ffffff;
+                    }
+                
+                    background-color: #3D3D3D;
+                }
             }
         }
     }
@@ -625,6 +649,12 @@
     
                 video {
                     height: auto;
+                }
+
+                a {
+                    padding: 10px 12px;
+                    width: 150px;
+                    font-size: 14px;
                 }
             }
         }

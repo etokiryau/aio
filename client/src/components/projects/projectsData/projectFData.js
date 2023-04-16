@@ -19,8 +19,14 @@ export const projectData = {
     dimensions: '17.6 x 15.7',
     price: 750,
     reducedPrice: 643,
-    preview: previewProject6,
-    modelUrn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dHN3aWdsenZ5dWJtbTZwaG04d2Ria2IzZHhqbmZrcnYtcHJvamVjdF9mLzAyXzAwMl8lRDAlQTMlRDElOEUlRDElODIlRDAlQkQlRDAlQkUlRDAlQjUlMjAlRDAlQjMlRDAlQkQlRDAlQjUlRDAlQjclRDAlQjQlRDElOEIlRDElODglRDAlQkElRDAlQkVfRU5HLnJ2dA',
+    project: {
+        preview: previewProject6,
+        modelUrn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dHN3aWdsenZ5dWJtbTZwaG04d2Ria2IzZHhqbmZrcnYtcHJvamVjdF9mLzAyXzAwMl8lRDAlQTMlRDElOEUlRDElODIlRDAlQkQlRDAlQkUlRDAlQjUlMjAlRDAlQjMlRDAlQkQlRDAlQjUlRDAlQjclRDAlQjQlRDElOEIlRDElODglRDAlQkElRDAlQkVfRU5HLnJ2dA'
+    },
+    tour: {
+        preview: project63,
+        url: ''
+    },
     descr: "Design of a multi gable house makes it possible to create as many viewing axes towards nature and to create high open spaces up to the roof ridge. House consists of two characteristic blocks with a gable roof. The central part with the living room is pulled out towards the private territory part. On the other hand, the façade of this block entirely covered with brick. The white block, in which are located recreation room and bedrooms, is recessed and its scale is the same as the brick facade. Also, the house can be built on a plot with a slope and will optimally fit into the landscape views and sunlight conditions.",
     renders: [
         project61,

@@ -1,7 +1,8 @@
 import project11 from '../data/img/project11.jpg';
 import project12 from '../data/img/project12.jpg';
 import project13 from '../data/img/project13.jpg';
-import previewProject1 from '../data/img/previewProject1.gif';
+import PreviewTour1 from '../data/img/previewTour1.png'
+import previewProject1 from '../data/img/previewProject1.png';
 import drawing11 from '../data/img/drawing11.png';
 import drawing12 from '../data/img/drawing12.png';
 import drawing13 from '../data/img/drawing13.png';
@@ -17,8 +18,14 @@ export const projectData = {
     dimensions: '6 x 21',
     price: 600,
     reducedPrice: 0,
-    preview: previewProject1,
-    modelUrn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dHN3aWdsenZ5dWJtbTZwaG04d2Ria2IzZHhqbmZrcnYtcHJvamVjdF9hL3Byb2plY3RfYV9mcmVlLm53ZA',
+    project: {
+        preview: previewProject1,
+        modelUrn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dHN3aWdsenZ5dWJtbTZwaG04d2Ria2IzZHhqbmZrcnYtcHJvamVjdF9hL3Byb2plY3RfYV9mcmVlLm53ZA'
+    },
+    tour: {
+        preview: PreviewTour1,
+        url: 'https://streams.vagon.io/streams/a0b7e5b1-4666-4d88-b5f4-9b64acf2ffd7'
+    },
     descr: 'This is a modern, single-story private house with a minimalistic cubic design. It features 2 spacious bedrooms and 2 well-appointed bathrooms. The clean lines and uncluttered aesthetic of the minimalist architecture give the house a contemporary, stylish feel. The open floor plan maximizes space and light, creating a comfortable living environment. The house is ideal for those who appreciate simplicity and functionality in their living space.',
     renders: [
         project11,

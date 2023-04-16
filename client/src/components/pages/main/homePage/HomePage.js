@@ -185,6 +185,10 @@ const HomePage = () => {
                     <h2>Virtual tour of the project</h2>
                     <div className="home__tour-enscape">
                         <video ref={el => videoRefs.current[4] = el} src={mainVideoEnscape} type="video/mp4" data-autoplay playsInline autoPlay loop muted></video>
+                        
+                        <CustomLink to="/projects/project_a" className="home__tour-enscape-link">
+                            <p>Try Virtual Tour</p>
+                        </CustomLink>
                     </div>
                 </div>
 

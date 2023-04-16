@@ -28,5 +28,5 @@ export const useHttpAps = () => {
         } 
     }, []);
 
-    return {getToken};
+    return { getToken };
 }

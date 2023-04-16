@@ -19,8 +19,14 @@ export const projectData = {
     dimensions: '19.9 x 13.2',
     price: 750,
     reducedPrice: 643,
-    preview: previewProject3,
-    modelUrn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dHN3aWdsenZ5dWJtbTZwaG04d2Ria2IzZHhqbmZrcnYtcHJvamVjdF9jLzAtMDAyXyVEMCVBRiVEMCVCOSVEMSU4NiVEMCVCRV9FTkdfdjEucnZ0',
+    project: {
+        preview: previewProject3,
+        modelUrn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dHN3aWdsenZ5dWJtbTZwaG04d2Ria2IzZHhqbmZrcnYtcHJvamVjdF9jLzAtMDAyXyVEMCVBRiVEMCVCOSVEMSU4NiVEMCVCRV9FTkdfdjEucnZ0'
+    },
+    tour: {
+        preview: project32,
+        url: ''
+    },
     descr: "This 2-story house has a minimalist cubic design with sun protection features and a white plaster facade to regulate inner temperature. The windows are specifically orientated to prevent direct sunlight in southern regions, yet still allow for plenty of natural light to come in. The main living area is spacious and divided into different levels, with an open-to-below design, interior green elements, and a glazed roof that provides sun exposure. The design also allows for good segregation of space, making it ideal for families with kids.",
     renders: [
         project31,

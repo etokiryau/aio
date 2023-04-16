@@ -19,8 +19,14 @@ export const projectData = {
     dimensions: '18.5 x 11.4',
     price: 750,
     reducedPrice: 643,
-    preview: previewProject2,
-    modelUrn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dHN3aWdsenZ5dWJtbTZwaG04d2Ria2IzZHhqbmZrcnYtcHJvamVjdF9iLzAtMDAzXyVEMCU5RiVEMCVCMCVEMSU4MCVEMCVCOCVEMCVCNl9FTkcucnZ0',
+    project: {
+        preview: previewProject2,
+        modelUrn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dHN3aWdsenZ5dWJtbTZwaG04d2Ria2IzZHhqbmZrcnYtcHJvamVjdF9iLzAtMDAzXyVEMCU5RiVEMCVCMCVEMSU4MCVEMCVCOCVEMCVCNl9FTkcucnZ0'
+    },
+    tour: {
+        preview: project23,
+        url: ''
+    },
     descr: "Two-story private house with a unique, stylish minimalistic design. The first floor of the house features a large common area that is perfect for entertaining guests or simply relaxing with family. This expansive space includes an open living and dining area that is flooded with natural light from the big windows. The seamless integration of indoor and outdoor spaces creates a harmonious and inviting atmosphere. The second floor is dedicated to the owner, featuring a private office, a large bathroom, and a spacious bedroom. The house boasts a plaster and fiber cement facade, creating a sleek and modern appearance. The integration of green elements, such as trees, into the house's design enhances its natural beauty. The offset of different architectural elements adds visual interest and character to the exterior. This house is perfect for those who appreciate design and a connection to nature.",
     renders: [
         project21,

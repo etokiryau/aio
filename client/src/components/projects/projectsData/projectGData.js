@@ -19,8 +19,14 @@ export const projectData = {
     dimensions: '16.2 x 17.5',
     price: 750,
     reducedPrice: 643,
-    preview: previewProject7,
-    modelUrn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dHN3aWdsenZ5dWJtbTZwaG04d2Ria2IzZHhqbmZrcnYtcHJvamVjdF9nLzBfMDAwXyVEMCU5MiVEMCVCNSVEMSU4MCVEMCVCRCVEMCVCMCVEMCVCQl9FTkcucnZ0',
+    project: {
+        preview: previewProject7,
+        modelUrn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dHN3aWdsenZ5dWJtbTZwaG04d2Ria2IzZHhqbmZrcnYtcHJvamVjdF9nLzBfMDAwXyVEMCU5MiVEMCVCNSVEMSU4MCVEMCVCRCVEMCVCMCVEMCVCQl9FTkcucnZ0'
+    },
+    tour: {
+        preview: project73,
+        url: ''
+    },
     descr: "This modern two-story house features a spacious living and dining area that is seamlessly connected, creating an open and inviting feel. The private spaces, both for guests and the owners, are designed for maximum comfort, making it the perfect home for families with kids. The facade is accented by numerous offsets and boasts a harmonious blend of brick and decorative panels, creating a unique industrial and modern aesthetic. This house truly offers the perfect balance of style and comfort.",
     renders: [
         project71,

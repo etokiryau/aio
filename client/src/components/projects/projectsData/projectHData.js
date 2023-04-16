@@ -17,8 +17,14 @@ export const projectData = {
     dimensions: '26.4 x 32.4',
     price: 750,
     reducedPrice: 643,
-    preview: previewProject8,
-    modelUrn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dHN3aWdsenZ5dWJtbTZwaG04d2Ria2IzZHhqbmZrcnYtcHJvamVjdF9oLzMtMDAxXyVEMCVBMiVEMCVCOCVEMCVCRiVEMCVCRSVEMCVCMiVEMCVCRSVEMCVCOV8lRDAlOUYlRDElODAlRDAlQkUlRDAlQjUlRDAlQkElRDElODJfRU5HLnJ2dA',
+    project: {
+        preview: previewProject8,
+        modelUrn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dHN3aWdsenZ5dWJtbTZwaG04d2Ria2IzZHhqbmZrcnYtcHJvamVjdF9oLzMtMDAxXyVEMCVBMiVEMCVCOCVEMCVCRiVEMCVCRSVEMCVCMiVEMCVCRSVEMCVCOV8lRDAlOUYlRDElODAlRDAlQkUlRDAlQjUlRDAlQkElRDElODJfRU5HLnJ2dA'
+    },
+    tour: {
+        preview: project82,
+        url: ''
+    },
     descr: "Project design focuses on providing a new, indoor/outdoor living area with ample natural light, creating spaces to accommodate big families. The first design move was running a majority of the additional parallel to both house parts, connecting them with a singular linking element containing a new mudroom, powder room, and hall. It also creates a courtyard in the in-between space which makes your lifestyle more comfortable in the south. The pavillion-like roof covers both the indoor and outdoor living areas with large overhangs that shade the glass and patio during the summer. Operable windows on both sides of the living space allow for cross ventilation like the breezeway-inspired design of the patio.",
     renders: [
         project81,

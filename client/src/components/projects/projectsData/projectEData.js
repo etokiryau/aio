@@ -17,8 +17,14 @@ export const projectData = {
     dimensions: '33 x 25.5',
     price: 750,
     reducedPrice: 643,
-    preview: previewProject5,
-    modelUrn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dHN3aWdsenZ5dWJtbTZwaG04d2Ria2IzZHhqbmZrcnYtcHJvamVjdF9lLzA0XzAwMV9FTkcucnZ0',
+    project: {
+        preview: previewProject5,
+        modelUrn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dHN3aWdsenZ5dWJtbTZwaG04d2Ria2IzZHhqbmZrcnYtcHJvamVjdF9lLzA0XzAwMV9FTkcucnZ0'
+    },
+    tour: {
+        preview: project52,
+        url: ''
+    },
     descr: "This one-story spacious house offers a harmonious blend of common spaces for spending time together and private bedrooms for peaceful rest. Inspired by aquariums, its architectural solutions integrate landscaping in a natural environment, creating a unique and beautiful interior. The futuristic facade, with its combination of classic white and black colors and 'floating' forms, adds a bold touch of modernity and makes it ideal for areas with a slope.",
     renders: [
         project51,

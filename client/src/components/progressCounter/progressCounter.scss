@@ -30,3 +30,21 @@
     }
 }
 
+.tour-loader {
+    .spinner {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        span {
+            display: block;
+            width: 50px;
+            height: 50px;
+            border: 5px solid;
+            border-radius: 50%;
+            border-color: transparent #3d3d3d #3d3d3d;
+            animation: spin 900ms infinite linear;
+        }
+    }
+}
