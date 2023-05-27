@@ -24,7 +24,7 @@ export const projectData = {
     },
     tour: {
         preview: PreviewTour1,
-        url: 'https://streams.vagon.io/streams/a0b7e5b1-4666-4d88-b5f4-9b64acf2ffd7'
+        url: 'https://streams.vagon.io/streams/5728a166-df38-481e-9b4a-c6b52ab8e71e'
     },
     descr: 'This is a modern, single-story private house with a minimalistic cubic design. It features 2 spacious bedrooms and 2 well-appointed bathrooms. The clean lines and uncluttered aesthetic of the minimalist architecture give the house a contemporary, stylish feel. The open floor plan maximizes space and light, creating a comfortable living environment. The house is ideal for those who appreciate simplicity and functionality in their living space.',
     renders: [

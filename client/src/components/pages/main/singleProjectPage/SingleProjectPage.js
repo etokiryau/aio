@@ -21,7 +21,6 @@ const SingleProjectPage = () => {
 
     const viewerContainer = useRef(null);
 
-    const [instanceStatus, setInstanceStaus] = useState('');
     const [project, setProject] = useState({});
     const [modelUrn, setModelUrn] = useState('');
     const [isProjectLoaded, setIsProjectLoaded] = useState(false);
@@ -175,11 +174,11 @@ const SingleProjectPage = () => {
 
                     <div className='project__model-popup' style={{display: isZoomedTour? 'block' : 'none'}}>
                         <div className='project__model-popup-viewer'>
-                            <div className={`project__model-popup-viewer-stub ${instanceStatus === 'running' ? `active` : ''}`}>
+                            {/* <div className="project__model-popup-viewer-stub">
                                 <ProgressCounter targetNumber={100} duration={180000} loader={true} start={isZoomedTour} />
-                            </div>
+                            </div> */}
                             {isZoomedTour ?
-                                <iframe id="vagonFrame" allow="microphone  *; clipboard-read *; clipboard-write *; encrypted-media *;" src={project.tour.url}/>
+                                <iframe id="vagonFrame" title="tour" src={project.tour.url}/>
                                 : null
                             }
                         </div>
