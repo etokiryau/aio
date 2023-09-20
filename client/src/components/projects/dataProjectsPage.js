@@ -99,17 +99,17 @@ const dataProjectsPage = [
             project63,
         ]
     },
-    {
-        name: 'Project g',
-        code: 'SKU: 700.951.277',
-        area: '277',
-        descr: "This modern two-story house features a spacious living and dining area that is seamlessly connected, creating an open and inviting feel. The private spaces, both for guests and the owners, are designed for maximum comfort, making it the perfect home for families with kids. The facade is accented by numerous offsets and boasts a harmonious blend of brick and decorative panels, creating a unique industrial and modern aesthetic. This house truly offers the perfect balance of style and comfort.",
-        renders: [
-            project71,
-            project72,
-            project73,
-        ]
-    },
+    // {
+    //     name: 'Project g',
+    //     code: 'SKU: 700.951.277',
+    //     area: '277',
+    //     descr: "This modern two-story house features a spacious living and dining area that is seamlessly connected, creating an open and inviting feel. The private spaces, both for guests and the owners, are designed for maximum comfort, making it the perfect home for families with kids. The facade is accented by numerous offsets and boasts a harmonious blend of brick and decorative panels, creating a unique industrial and modern aesthetic. This house truly offers the perfect balance of style and comfort.",
+    //     renders: [
+    //         project71,
+    //         project72,
+    //         project73,
+    //     ]
+    // },
     {
         name: 'Project h',
         code: 'SKU: 800.951.461',
